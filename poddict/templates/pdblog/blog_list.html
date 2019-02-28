@@ -1,0 +1,25 @@
+<h1>Poddcit</h1>
+
+<table border="1">
+	<thread>
+		<tr>
+		<th>Title</th>
+		<th>detail</th>
+		<th>edit</th>
+		<th>Delete</th>
+		</tr>
+	</thread>
+	<tbody>
+		{% for blog in objects_list %}
+		<tr>
+		<td>{{ blog.title }} </td>
+		<!-- <td>{{ blog.author }} </td> -->
+		<td><a href="{% url "blog_view" blog.id %}">View</td>
+		<td><a href="{% url "blog_edit" blog.id %}">Edit</td>
+		<td><a href="{% url "blog_delete" blog.id %}">Delete</td>
+		</tr>
+		{%  endfor %}
+	</tbody>
+</table>
+
+<a href="{% url "blog_new" %}">New</a>
