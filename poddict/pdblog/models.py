@@ -11,9 +11,11 @@ class Writer(models.Model):
         app_label = 'pdblog'
 
     name = models.CharField(max_length=15)
-    registered_date = models.DateTimeField('date registered')
+    registered_date = models.DateTimeField('date registered', auto_now=True)
     email_address = models.EmailField(max_length=254)
 
+    def __str__(self):
+        return self.name
 
 class Article(models.Model):
     class Meta:

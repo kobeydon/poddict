@@ -14,8 +14,9 @@ def article_list(request, template_name='pdblog/list.html'):
     return render(request, template_name, data)
 
 def article_view(request, article_id, template_name='pdblog/detail.html'):
-    blog = get_object_or_404(Article, pk=article_id)
-    return render(request, template_name, {'objects':blog})
+    target_article = get_object_or_404(Article, pk=article_id)
+    data = { 'article_detail' : target_article }
+    return render(request, template_name, data)
 
 # def blog_create(request, template_name='pdblog/forms.html'):
 #     form = BlogForm(request.POST or None)

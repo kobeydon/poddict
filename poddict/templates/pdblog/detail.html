@@ -1,11 +1,18 @@
 {% extends "pdblog/base.html" %}
 {% block contents %}
+  <table border="1" class="table table-striped">
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Author</th>
+      <th>date published</th>
+    </tr>
+    <tr>
+      <td>{{ article_detail.title }}</td>
+      <td>{{ article_detail.text }}</td>
+      <td>{{ article_detail.writer}}</td>
+      <td>{{ article_detail.pub_date}}</td>
+    </tr>
 
-<h1>{{ question.question_text }}</h1>
-
-<form action="{% url 'pdblog:blog_view' question.id %}" method="post">
-  {% csrf_token %}
-  {{ form }}
-  <input type="submit" value="Vote">
-</form>
-{% endblock contents %}
+  </table>
+  {% endblock contents %}

@@ -9,10 +9,10 @@
     </tr>
     {% for article in objects_list %}
     <tr>
-      <td>{{ artilcle }}</td>
+      <td>{{ article.title }}</td>
       <td>{{ article.pub_date }}</td>
       <td>{{ article.writer}}</td>
-      <td><a href="{% url 'pdblog:blog_view' article.pk %}">詳細画面へ</a>
+      <td><a href="{% url 'pdblog:article_view' article.pk %}">詳細画面へ</a>
     </tr>
     {% endfor %}
 

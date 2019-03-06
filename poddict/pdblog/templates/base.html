@@ -13,7 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/sticky-footer-navbar.css' %}" rel="stylesheet">
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pd_bootstrap.css' %}" rel="stylesheet">
     <style "text/css">
     body > .container {
       padding-top: 60px; on the body > .container.
@@ -33,7 +33,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item {% block nav_ativate %}{% endblock %}">
+            <li class="nav-item {% block nav_activate %}{% endblock %}">
               <a class="nav-link" href="{% url 'pdblog:article_list' %}">TOP<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
