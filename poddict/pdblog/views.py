@@ -3,41 +3,40 @@ from django.forms import ModelForm
 
 from pdblog.models import Article, Writer
 
-class BlogForm(ModelForm):
-    class Meta:
-        model = Article
-        fields = ['pdblog_title', 'pdblog_text', 'pub_date']
+# class BlogForm(ModelForm):
+#     class Meta:
+#         model = Article
+#         fields = ['title', 'text']
 
-def blog_list(request, template_name='pdblog/blog_list.html'):
-    title = Article.objects.all()
-    data = {}
-    data['objects_list'] = title
+def article_list(request, template_name='pdblog/list.html'):
+    article = Article.objects.all()
+    data = { 'objects_list' : article }
     return render(request, template_name, data)
 
-def blog_view(request, pk, template_name='pdblog/blog_detail.html'):
-    blog = get_object_or_404(Article, pk=pk)
-    return render(request, template_name, {'object':blog})
+def article_view(request, article_id, template_name='pdblog/detail.html'):
+    blog = get_object_or_404(Article, pk=article_id)
+    return render(request, template_name, {'objects':blog})
 
-def blog_create(request, template_name='pdblog/blog_form.html'):
-    form = BlogForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('blog_list')
-    return render(request, template_name, {'form':form})
-
-def blog_update(request, pk, template_name='pdblog/blog_form.html'):
-    blog= get_object_or_404(Article, pk=pk)
-    form = BlogForm(request.POST or None, instance=blog)
-    if form.is_valid():
-        form.save()
-        return redirect('blog_list')
-    return render(request, template_name, {'form':form})
-
-
-def blog_delete(request, pk, template_name='pdblog/blog_confirm_delete.html'):
-    blog = get_object_or_404(Article, pk=pk)
-    if request.method=='POST':
-        blog.delete()
-        return redirect('blog_list')
-    return render(request, template_name, {'object':blog})
-# Create your views here.
+# def blog_create(request, template_name='pdblog/forms.html'):
+#     form = BlogForm(request.POST or None)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('blog_list')
+#     return render(request, template_name, {'form':form})
+#
+# def blog_update(request, pk, template_name='pdblog/forms.html'):
+#     blog= get_object_or_404(Article, pk=pk)
+#     form = BlogForm(request.POST or None, instance=blog)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('blog_list')
+#     return render(request, template_name, {'form':form})
+#
+#
+# def blog_delete(request, pk, template_name='pdblog/forms.html'):
+#     blog = get_object_or_404(Article, pk=pk)
+#     if request.method=='POST':
+#         blog.delete()
+#         return redirect('blog_list')
+#     return render(request, template_name, {'object':blog})
+# # Create your views here.

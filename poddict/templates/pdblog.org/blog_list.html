@@ -12,7 +12,7 @@
 	<tbody>
 		{% for blog in objects_list %}
 		<tr>
-		<td>{{ blog.title }} </td>
+		<td>{{ blog.pdblog_title }} </td>
 		<!-- <td>{{ blog.author }} </td> -->
 		<td><a href="{% url "blog_view" blog.id %}">View</td>
 		<td><a href="{% url "blog_edit" blog.id %}">Edit</td>

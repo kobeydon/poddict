@@ -1,0 +1,20 @@
+{% extends "pdblog/base.html" %}
+{% block contents %}
+  <table border="1" class="table table-striped">
+    <tr>
+      <th>Title</th>
+      <th>published</th>
+      <th>Author</th>
+      <th>detail</th>
+    </tr>
+    {% for article in objects_list %}
+    <tr>
+      <td>{{ artilcle }}</td>
+      <td>{{ article.pub_date }}</td>
+      <td>{{ article.writer}}</td>
+      <td><a href="{% url 'pdblog:blog_view' article.pk %}">詳細画面へ</a>
+    </tr>
+    {% endfor %}
+
+  </table>
+  {% endblock contents %}
