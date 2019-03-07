@@ -7,7 +7,8 @@
         {{ article_detail.title }}
       </h1>
       <span class="pubdate">{{ article_detail.pub_date }}</span>
-      <p class="text">{{ article_detail.text }}</p>&lt;3,<br />
+      <p class="text">{{ article_detail.text }}</p>
   </div>
+  <div><a href="{% url 'pdblog:article_update' article_detail.pk %}">edit this article</a></div>
 
 {% endblock contents %}
