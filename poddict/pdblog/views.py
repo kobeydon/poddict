@@ -24,7 +24,7 @@ def article_create(request, template_name='pdblog/forms.html'):
         form = ArticleForm()
 
     return render(request, template_name, {'form':form})
-#
+
 def article_update(request, article_id, template_name='pdblog/forms.html'):
     article= get_object_or_404(Article, pk=article_id)
     form = ArticleForm(request.POST or None, instance=article)
@@ -32,12 +32,10 @@ def article_update(request, article_id, template_name='pdblog/forms.html'):
         form.save()
         return redirect('pdblog:article_list')
     return render(request, template_name, {'form':form})
-#
-#
-# def blog_delete(request, pk, template_name='pdblog/forms.html'):
-#     blog = get_object_or_404(Article, pk=pk)
-#     if request.method=='POST':
-#         blog.delete()
-#         return redirect('blog_list')
-#     return render(request, template_name, {'object':blog})
-# # Create your views here.
+
+def article_delete(request, article_id, template_name='pdblog/forms.html'):
+    article = get_object_or_404(Article, pk=article_id)
+    if request.method=='POST':
+        article.delete()
+        return redirect('pdblog:article_list')
+    return render(request, template_name, {'form':article})

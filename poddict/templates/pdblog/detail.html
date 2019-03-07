@@ -10,5 +10,6 @@
       <p class="text">{{ article_detail.text }}</p>
   </div>
   <div><a href="{% url 'pdblog:article_update' article_detail.pk %}">edit this article</a></div>
+  <div><a href="{% url 'pdblog:article_delete' article_detail.pk %}">delete this article</a></div>
 
 {% endblock contents %}

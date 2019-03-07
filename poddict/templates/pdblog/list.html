@@ -12,9 +12,9 @@
       <td>{{ article.title }}</td>
       <td>{{ article.pub_date }}</td>
       <td>{{ article.writer}}</td>
-      <td><a href="{% url 'pdblog:article_view' article.pk %}">詳細画面へ</a>
+      <td><a href="{% url 'pdblog:article_view' article.pk %}">Check This Blog</a>
     </tr>
     {% endfor %}
   </table>
-  <button>create blog</button>
+  <button><a href="{% url 'pdblog:article_create' %}"">create blog</a></button>
   {% endblock contents %}
