@@ -1,18 +1,13 @@
 {% extends "pdblog/base.html" %}
 {% block contents %}
-  <table border="1" class="table table-striped">
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Author</th>
-      <th>date published</th>
-    </tr>
-    <tr>
-      <td>{{ article_detail.title }}</td>
-      <td>{{ article_detail.text }}</td>
-      <td>{{ article_detail.writer}}</td>
-      <td>{{ article_detail.pub_date}}</td>
-    </tr>
 
-  </table>
-  {% endblock contents %}
+<div>
+  <div class="post">
+      <h1>
+        {{ article_detail.title }}
+      </h1>
+      <span class="pubdate">{{ article_detail.pub_date }}</span>
+      <p class="text">{{ article_detail.text }}</p>&lt;3,<br />
+  </div>
+
+{% endblock contents %}

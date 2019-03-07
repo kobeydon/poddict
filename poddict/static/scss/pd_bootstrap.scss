@@ -40,3 +40,17 @@
 @import "carousel";
 @import "utilities";
 @import "print";
+
+
+body > .container {
+  padding-top: 90px;
+}
+
+.post{}
+.post > .pubdate {
+  padding-top:25px;
+  color: gray;
+}
+.post > .text {
+  padding-top: 35px;
+}

@@ -5,21 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="poddict website">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Sticky Footer Navbar Template for Bootstrap</title>
+    <title>poddict base for Fixed navbar and sticky footer</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/sticky-footer-navbar.css' %}" rel="stylesheet">
     <link href="{% static 'css/pd_bootstrap.css' %}" rel="stylesheet">
-    <style "text/css">
-    body > .container {
-      padding-top: 60px; on the body > .container.
-    }
-    </style>
+
     <!-- Custom styles for this template -->
+
   </head>
 
   <body>
@@ -27,7 +24,8 @@
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="{% url 'pdblog:article_list' %}">PODDICT<span>get what everyone else thinks</span></a>
+        <a class="navbar-brand" href="{% url 'pdblog:article_list' %}">PODDICT</a>
+        <small style="Color:white">get what everyone else thinks</small>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
