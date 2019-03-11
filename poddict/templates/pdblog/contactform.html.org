@@ -1,0 +1,29 @@
+{% extends "pdblog/base.html" %}
+{% block contents %}
+
+<form action="" method="POST">
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+  <div class="form-group">
+    {{ form.subject.errors }}
+    <label for="{{ form.subject.id_for_label }}">Email Subject:</label>
+    {{ form.subject }}
+  </div>
+  <div class="form-group">
+    {{ form.message.errors }}
+    <label for="{{ form.message.id_for_label }}">Message:</label>
+    {{ form.message }}
+  </div>
+  <div class="form-group">
+    {{ form.sender.errors }}
+    <label for="{{ form.sender.id_for_label }}">Sender:</label>
+    {{ form.sender }}
+  </div>
+  <div class="form-check">
+    {{ form.cc_myself.errors }}
+    <label for="{{ form.cc_myself.id_for_label }}">CC yourself?</label>
+    {{ form.cc_myself }}
+  </div>
+  <input type="submit" class="btn btn-primary" value="Send"/>
+</form>
+{% endblock contents %}

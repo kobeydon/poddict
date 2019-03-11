@@ -1,10 +1,10 @@
 {% extends "pdblog/base.html" %}
 {% block contents %}
 
-<h1>Write Your own article</h1>
+<h1>FORM</h1>
 <form action="" method="POST">
   {% csrf_token %}
-  {{ form }}
+  {{ form.as_p }}
   <input type="submit" value="Submit"/>
 </form>
 <div><a href="{% url 'pdblog:article_list' %}">Return to Index Page</a></div>

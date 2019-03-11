@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'pdblog.apps.PdblogConfig',
+    'bootstrap4',
+    'pdblog',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
