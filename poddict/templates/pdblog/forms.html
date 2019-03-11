@@ -1,11 +1,15 @@
 {% extends "pdblog/base.html" %}
+
+{% load bootstrap4 %}
+
 {% block contents %}
 
-<h1>FORM</h1>
-<form action="" method="POST">
+<form action="" method="POST" class="form">
   {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="Submit"/>
+  {% bootstrap_form form %}
+  {% buttons %}
+  <button type="submit" class="btn-primary">Submit</button>
+  {% endbuttons %}
 </form>
 <div><a href="{% url 'pdblog:article_list' %}">Return to Index Page</a></div>
 {% endblock contents %}
