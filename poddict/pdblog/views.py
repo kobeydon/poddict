@@ -42,7 +42,7 @@ def article_delete(request, article_id, template_name='pdblog/forms.html'):
     return render(request, template_name, {'form':article})
 
 def writer_create(request):
-    # Whan a POST request
+    # When a POST request
     if request.method == 'POST':
         form = WriterForm(request.POST or None)
         if form.is_valid():

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'register',
     'bootstrap4',
     'pdblog',
     'django.contrib.admin',
@@ -123,3 +124,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+AUTH_USER_MODEL = 'register.User'
+
+LOGIN_URL = 'register:login'
+LOGIN_REDIRECT_URL ='register:top'

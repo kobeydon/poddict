@@ -1,8 +1,10 @@
 import datetime
 from django.db import models
 from django.utils import timezone
+from django.core.mail import send_mail
 
 # Create your models here.
+
 
 class Writer(models.Model):
     class Meta:
