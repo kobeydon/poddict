@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-    <!-- メインコンテント -->
-    <div class="container mt-3">
-        {% block content %}{% endblock %}
-    </div>
+
+{% block contents %}
+<div class="container mt-3">
+    {% block register_content %}{% endblock %}
+</div>
+{% endblock contents %}

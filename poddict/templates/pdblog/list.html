@@ -1,4 +1,5 @@
 {% extends "pdblog/base.html" %}
+
 {% block contents %}
   <table border="1" class="table table-striped">
     <tr>
@@ -17,4 +18,4 @@
     {% endfor %}
   </table>
   <button><a href="{% url 'pdblog:article_create' %}"">create blog</a></button>
-  {% endblock contents %}
+{% endblock contents %}

@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="poddict website">
-    <meta name="author" content="">
+    <meta name="author" content="kobeydon">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>poddict base for Fixed navbar and sticky footer</title>
+    <title>poddict</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/sticky-footer-navbar.css' %}" rel="stylesheet">
@@ -60,7 +60,7 @@
 
     <!-- Begin page content -->
     <main role="main" class="container">
-        <div>{% block content %}{% endblock %}</div>
+        {% block contents %}{% endblock %}
     </main>
 
     <footer class="footer">
