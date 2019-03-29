@@ -25,29 +25,29 @@ class UserCreate(generic.CreateView):
     form_class = UserCreateForm
 
     def form_valid(self, form):
-    """temporarily register and send activation mail"""
-    user = form.save(commit=False)
-    user.is_active = False
-    user.save()
+        # """temporarily register and send activation mail"""
+        user = form.save(commit=False)
+        user.is_active = False
+        user.save()
 
-    """ send activation url """
-    current_site = get_current_site(self.request)
-    domain = current_site.domain
-    context = {
-        'protocol':self.request.scheme,
-        'domain':domain,
-        'token':dumps(user.pk),
-        'user':user,
-    }
+        """ send activation url """
+        current_site = get_current_site(self.request)
+        domain = current_site.domain
+        context = {
+            'protocol':self.request.scheme,
+            'domain':domain,
+            'token':dumps(user.pk),
+            'user':user,
+            }
 
-    subject_template = get_template('register/mail_template/create/subject.txt')
-    subject = subject_template.render(context)
+        subject_template = get_template('register/mail_template/create/subject.txt')
+        subject = subject_template.render(context)
 
-    message_template = get_template('register/mail_template/create/message.txt')
-    message = message_template.render(context)
+        message_template = get_template('register/mail_template/create/message.txt')
+        message = message_template.render(context)
 
-    user.email_user(subject, message)
-    return redirect('register:user_create_done')
+        user.email_user(subject, message)
+        return redirect('register:user_create_done')
 
 
 class UserCreateDone(generic.TemplateView):
@@ -83,7 +83,7 @@ class UserCreateComplete(generic.TemplateView):
                     return super().get(request, **kwargs)
 
             return HttpResponseBadRequest()
-            
+
 
 class Top(generic.TemplateView):
     template_name = 'register/top.html'

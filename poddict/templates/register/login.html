@@ -1,6 +1,6 @@
-{% extends "register/base.html" %}
+{% extends "base.html" %}
 
-{% block register_content %}
+{% block contents %}
 <div class="row">
   <div class="card col-md-6">
     <div class="card-body">
@@ -12,7 +12,7 @@
           <hr>
         {% endfor %}
         <button type="submit" class="btn btn-success btn-lg btn-block">ログイン</button>
-        <input typw="hidden" name="next" value="{{ next }}" />
+        <input type="hidden" name="next" value="{{ next }}" />
         {% csrf_token %}
       </form>
     </div>
