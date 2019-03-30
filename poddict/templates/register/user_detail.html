@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block contents %}
+<table class="table">
+    <tbody>
+      <tr>
+        <th>User Name</th>
+        <td>{{ user.username }}</td>
+      </tr>
+      {% if user.username != user.email %}
+      <tr>
+        <th>UserName</th>
+        <td>{{ user.email }}</td>
+      </tr>
+      {% endif %}
+      <tr>
+        <th>LastName</th>
+        <td>{{ user.last_name }}</td>
+      </tr>
+      <tr>
+        <th>FirstName</th>
+        <td>{{ user.first_name }}</td>
+      </tr>
+    </tbody>
+</table>
+{% endblock %}

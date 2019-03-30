@@ -30,3 +30,18 @@ class UserCreateForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
+
+class UserUpdateForm(forms.ModelForm):
+    """Form to update users"""
+
+    class Meta:
+        model = User
+        if User.USERNAME_FIELD == 'email':
+            fields = ('email', 'first_name', 'last_name')
+        else:
+            fields = ('username', 'email', 'first_name', 'last_name')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'

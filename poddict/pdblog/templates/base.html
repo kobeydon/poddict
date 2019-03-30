@@ -25,7 +25,7 @@
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="{% url 'pdblog:article_list' %}">PODDICT</a>
-        <small style="Color:white">get what everyone else thinks</small>
+        <small style="Color:white">what everyone else thinks</small>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,6 +38,11 @@
               <a class="nav-link" href="#">not available</a>
             </li>
               {% if user.is_authenticated %}
+              <li>
+                <a class="nav-item nav-link" href="{% url 'register:user_detail' user.pk %}">User Info</a>
+              </li>
+              <li>
+                <a class="nav-item nav-link" href="{% url 'register:user_update' user.pk %}">User Update</a>
               <li>
                 <a class="nav-item nav-link" href="{% url 'register:logout' %}">ログアウト</a>
               </li>
