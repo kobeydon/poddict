@@ -86,7 +86,7 @@ class UserCreateComplete(generic.TemplateView):
 
 
 class Top(generic.TemplateView):
-    template_name = 'register/top.html'
+    template_name = 'pdblog/list.html'
 
 
 class Login(LoginView):
@@ -105,7 +105,7 @@ class OnlyYouMixin(UserPassesTestMixin):
 
     def test_func(self):
         user = self.request.user
-        return user.pk == self.kwargs['pk'] or user.is_usperuser
+        return user.pk == self.kwargs['pk'] or user.is_superuser
 
 class UserDetail(OnlyYouMixin, generic.DetailView):
     model = User
