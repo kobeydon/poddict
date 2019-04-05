@@ -128,6 +128,6 @@ STATICFILES_DIRS = (
 AUTH_USER_MODEL = 'register.User'
 
 LOGIN_URL = 'register:login'
-LOGIN_REDIRECT_URL ='register:top'
+LOGIN_REDIRECT_URL ='pdblog:article_list'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

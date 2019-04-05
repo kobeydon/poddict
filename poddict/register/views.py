@@ -84,11 +84,6 @@ class UserCreateComplete(generic.TemplateView):
 
             return HttpResponseBadRequest()
 
-
-class Top(generic.TemplateView):
-    template_name = 'pdblog/list.html'
-
-
 class Login(LoginView):
     """login page"""
     form_class = LoginForm
@@ -97,7 +92,7 @@ class Login(LoginView):
 
 class Logout(LoginRequiredMixin, LogoutView):
     """logout page"""
-    template_name = 'register/top.html'# Create your views here.
+    template_name = 'pdblog/list.html'
 
 
 class OnlyYouMixin(UserPassesTestMixin):

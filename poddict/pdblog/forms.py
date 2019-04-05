@@ -1,5 +1,5 @@
 from django import forms
-from pdblog.models import Writer, Article
+from pdblog.models import Article
 
 class ArticleForm(forms.ModelForm):
     class Meta:

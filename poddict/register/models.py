@@ -90,5 +90,5 @@ if settings.AUTH_USER_MODEL == 'register.User':
 
         @property
         def username(self):
-            """username getter. return mail address when another app access username """
+            """username getter return mail address when another app access username """
             return self.email

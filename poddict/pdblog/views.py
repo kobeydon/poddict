@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from django.core.mail import send_mail
-from .models import Article, Writer
+from .models import Article
+from register.models import User
 from .forms import ArticleForm, WriterForm, ContactForm
 
 def article_list(request, template_name='pdblog/list.html'):
@@ -11,12 +12,14 @@ def article_list(request, template_name='pdblog/list.html'):
 def article_view(request, article_id, template_name='pdblog/detail.html'):
     target_article = get_object_or_404(Article, pk=article_id)
     data = { 'article_detail' : target_article }
+
     return render(request, template_name, data)
 
 def article_create(request, template_name='pdblog/forms.html'):
     form = ArticleForm(request.POST or None)
     if form.is_valid():
         try:
+            form.instance.user = request.user
             form.save()
             return redirect('pdblog:article_list')
         except:
@@ -30,6 +33,7 @@ def article_update(request, article_id, template_name='pdblog/forms.html'):
     article= get_object_or_404(Article, pk=article_id)
     form = ArticleForm(request.POST or None, instance=article)
     if form.is_valid():
+        form.instance.user = request.user
         form.save()
         return redirect('pdblog:article_list')
     return render(request, template_name, {'form':form})
@@ -40,16 +44,6 @@ def article_delete(request, article_id, template_name='pdblog/forms.html'):
         article.delete()
         return redirect('pdblog:article_list')
     return render(request, template_name, {'form':article})
-
-def writer_create(request):
-    # When a POST request
-    if request.method == 'POST':
-        form = WriterForm(request.POST or None)
-        if form.is_valid():
-            return HttpResponseRedirect('/index/')
-    else:
-        form = WriterForm()
-    return render(request, 'pdblog/forms.html', {'form':form})
 
 def contactformsend(request):
     form = ContactForm(request.POST or None)

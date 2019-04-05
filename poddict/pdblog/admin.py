@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Writer, Article
+from .models import Article
 
-admin.site.register(Writer)
-admin.site.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    fields = ('title', 'text' )
+    def save_model(self, request, obj, form, change):
+        obj.user = request.user
+        obj.save()
+
+admin.site.register(Article, ArticleAdmin)
