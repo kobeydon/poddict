@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block contents %}
+<form action="" method="POST">
+  {{ form.non_field_errord }}
+  <div class="form-group">
+    <h1> Are you sure you want to delete this blog?</h1>
+    <table border ="1" class="table table-striped">
+      <tr>
+        <th>Title</th>
+        <th>Article Number</th>
+        <th>Published Date</th>
+      </tr>
+      <tr>
+        <td>{{ object }}</td>
+        <td>{{ object.pk }}</td>
+        <td>{{ object.pub_date }}</td>
+      </tr>
+    </table>
+    </div>
+      {% csrf_token %}
+  <button type="submit" class="btn btn-primary btn-lg"> Delete </button>
+</form>
+{% endblock %}

@@ -6,7 +6,7 @@ from django.contrib.auth.views import (
 )
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.signing import BadSignature, SignatureExpired, loads, dumps
-from django.http import Http404, HttpResponseBadRequest
+from django.http import HttpResponseBadRequest
 from django.shortcuts import redirect, resolve_url
 from django.template.loader import get_template
 from django.views import generic
@@ -92,7 +92,7 @@ class Login(LoginView):
 
 class Logout(LoginRequiredMixin, LogoutView):
     """logout page"""
-    template_name = 'pdblog/list.html'
+    template_name = 'register/logout.html'
 
 
 class OnlyYouMixin(UserPassesTestMixin):
@@ -114,6 +114,4 @@ class UserUpdate(OnlyYouMixin, generic.UpdateView):
 
     def get_success_url(self):
         return resolve_url('register:user_detail', pk=self.kwargs['pk'])
-
-
 
