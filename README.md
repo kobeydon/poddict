@@ -1,4 +1,4 @@
 # poddict
 podcast blog project
 
-This is Django projecy by Kobeydon
+This is a Django project by Kobeydon
