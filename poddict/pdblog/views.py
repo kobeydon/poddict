@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 
 from .models import Article
 from register.models import User
-from .forms import ArticleForm, WriterForm, ContactForm
+from .forms import ArticleForm, ContactForm
 
 
 def article_list(request, template_name='pdblog/list.html'):
@@ -24,13 +24,12 @@ def article_view(request, article_id, template_name='pdblog/detail.html'):
 
 class ArticleCreate(LoginRequiredMixin, CreateView):
     model = Article
-    fields = ['title','text']
+    form_class = ArticleForm
     template_name = 'pdblog/forms.html'
 
 
     def get_success_url(self):
         return reverse_lazy('pdblog:article_list')
-
 
     def form_valid(self, form):
         form.instance.user = self.request.user

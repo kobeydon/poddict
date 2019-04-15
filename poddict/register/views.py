@@ -30,7 +30,7 @@ class UserCreate(generic.CreateView):
         user.is_active = False
         user.save()
 
-        """ send activation url """
+        """ send activation email """
         current_site = get_current_site(self.request)
         domain = current_site.domain
         context = {

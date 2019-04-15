@@ -1,6 +1,9 @@
 {% extends "pdblog/base.html" %}
 
 {% block contents %}
+{% if user.is_authenticated %}
+<div> <a class="btn btn-info" href="{% url 'pdblog:article_create' %}"">create blog</a></div>
+{% endif %}
   <table border="1" class="table table-striped">
     <tr>
       <th>Title</th>
@@ -17,7 +20,5 @@
     </tr>
     {% endfor %}
   </table>
-  {% if user.is_authenticated %}
-  <button><a href="{% url 'pdblog:article_create' %}"">create blog</a></button>
-  {% endif %}
+
 {% endblock contents %}
