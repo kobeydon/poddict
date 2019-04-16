@@ -10,6 +10,7 @@
       <th>published</th>
       <th>Author</th>
       <th>detail</th>
+      <th>Published</th>
     </tr>
     {% for article in objects_list %}
     <tr>
@@ -17,6 +18,7 @@
       <td>{{ article.pub_date }}</td>
       <td>{{ article.user}}</td>
       <td><a href="{% url 'pdblog:article_view' article.pk %}">Check This Blog</a>
+      <td>{{ article.is_published }}
     </tr>
     {% endfor %}
   </table>
