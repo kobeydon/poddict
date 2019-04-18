@@ -4,7 +4,12 @@ from .models import Article, AllArticles
 def publisharticles(modeladmin, request, queryset):
     queryset.update(is_published=True)
 
-publisharticles.short_description = "Publish selected articles"
+publisharticles.short_description = "Publish articles"
+
+def withdrawarticles(modeladmin, request, queryset):
+    queryset.update(is_published=False)
+
+withdrawarticles.short_description = "Withdraw articles"
 
 class ArticleAdmin(admin.ModelAdmin):
 
@@ -18,7 +23,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'user', 'pub_date', 'is_published')
     list_filter = ('is_published', 'pub_date')
     search_fields = ('title', 'pub_date', 'user', 'text')
-    actions = [publisharticles]
+    actions = [publisharticles, withdrawarticles]
 
 
 admin.site.register(AllArticles, ArticleAdmin)
