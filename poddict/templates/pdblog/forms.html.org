@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+
+{% block contents %}
+
+<form action="" method="POST">
+    {{ form.non_field_errors }}
+    {% for field in form %}
+    <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+        {% bootstrap_form field %}
+        {% bootstrap_form field.errors %}
+    </div>
+    {% endfor %}
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+</form>
+{% endblock %}

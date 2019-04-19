@@ -21,7 +21,7 @@ class Article(models.Model):
         ordering = ['-pub_date']
         app_label = 'pdblog'
 
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=128)
     text = models.TextField(default="")
     pub_date = models.DateTimeField('date published', auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -39,5 +39,3 @@ class AllArticles(Article):
         proxy = True
 
     objects = models.Manager()
-
-

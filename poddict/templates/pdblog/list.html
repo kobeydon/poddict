@@ -7,12 +7,12 @@
   <table border="1" class="table table-striped">
     <tr>
       <th>Title</th>
-      <th>published</th>
+      <th>Date</th>
       <th>Author</th>
-      <th>detail</th>
+      <th>Detail</th>
       <th>Published</th>
     </tr>
-    {% for article in objects_list %}
+    {% for article in object_list %}
     <tr>
       <td>{{ article.title }}</td>
       <td>{{ article.pub_date }}</td>

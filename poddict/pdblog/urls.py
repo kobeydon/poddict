@@ -3,7 +3,7 @@ from pdblog import views
 
 app_name = 'pdblog'
 urlpatterns = [
-        path('', views.article_list, name='article_list'),
+        path('', views.ArticleList.as_view(), name='article_list'),
         path('view/<int:article_id>', views.article_view, name='article_view'),
         path('create/', views.ArticleCreate.as_view(), name='article_create'),
         path('edit/<int:pk>', views.ArticleUpdate.as_view(), name='article_update'),

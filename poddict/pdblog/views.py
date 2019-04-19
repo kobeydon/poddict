@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
 from django.http import Http404, HttpResponseBadRequest
 from django.urls import reverse_lazy
 
@@ -11,10 +12,15 @@ from register.models import User
 from .forms import ArticleForm, ContactForm
 
 
-def article_list(request, template_name='pdblog/list.html'):
-    article = Article.objects.all()
-    data = { 'objects_list' : article }
-    return render(request, template_name, data)
+class ArticleList(ListView):
+    model = Article
+    template_name = 'pdblog/list.html'
+
+# funstion view as reference
+# def article_list(request, template_name='pdblog/list.html'):
+#     article = Article.objects.all()
+#     data = { 'objects_list' : article }
+#     return render(request, template_name, data)
 
 def article_view(request, article_id, template_name='pdblog/detail.html'):
 
