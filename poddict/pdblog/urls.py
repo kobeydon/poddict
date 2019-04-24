@@ -8,5 +8,6 @@ urlpatterns = [
         path('create/', views.ArticleCreate.as_view(), name='article_create'),
         path('edit/<int:pk>', views.ArticleUpdate.as_view(), name='article_update'),
         path('delete/<int:pk>', views.ArticleDelete.as_view(), name='article_delete'),
-        path('contact/', views.contactformsend, name='mail_send')
+        path('contact/', views.contactformsend, name='mail_send'),
+        path('favorites/', views.favorites, name='favorites')
         ]

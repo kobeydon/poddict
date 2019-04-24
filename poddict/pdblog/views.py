@@ -4,12 +4,17 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
-from django.http import Http404, HttpResponseBadRequest
+from django.http import Http404, HttpResponseBadRequest, HttpResponse
 from django.urls import reverse_lazy
+from django.views.decorators.http import require_POST
 
 from .models import Article
 from register.models import User
 from .forms import ArticleForm, ContactForm
+try:
+    from django.utils import simplejson as json
+except ImportError:
+    import json
 
 
 class ArticleList(ListView):
@@ -115,3 +120,25 @@ def contactformsend(request):
     else:
         form = ContactForm()
     return render(request, 'pdblog/contactform.html', {'form': form})
+
+@login_required
+@require_POST
+def favorites(request):
+    if request.method == 'POST':
+        user = requset.user
+        slug = request.POST.get('slug', None)
+        article = get_object_or_404(Artilce, slug=slug)
+
+        if article.favorites.filter(id=user.id).exsists():
+            article.favorites.remove(user)
+            message='Not favorite'
+
+        else:
+            article.favorites.add(user)
+            message = 'Favorite'
+
+    data={'favorites': article.total_fav, 'message': message }
+
+    return HttpResponse(json.dumps(data), content_type='application/json')
+
+

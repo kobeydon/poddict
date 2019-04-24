@@ -3,16 +3,13 @@ from django.db import models
 from django.utils import timezone
 from django.core.mail import send_mail
 from register.models import User
+from django.template.defaultfilters import slugify
 # Create your models here.
 
 
 class ArticleManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(is_published=True)
-
-class ArticlePublishManager(models.Manager):
-    def get_queryset(self):
-        return super().get_queryset()
 
 class Article(models.Model):
     class Meta:
@@ -26,12 +23,24 @@ class Article(models.Model):
     pub_date = models.DateTimeField('date published', auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_published = models.BooleanField(default=False)
-    # favorite = models.IntegerField("Like!", default=0)
+    favorites = models.ManyToManyField(User, related_name='favorites')
+    slug = models.SlugField(default="")
+    # comments = models.TextField(max_length=140)
     #uses custom manager for general view
     objects = ArticleManager()
 
     def __str__(self):
         return self.title
+
+    @property
+    def total_fav(self):
+        return self.favorites.count()
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+
 
 
 class AllArticles(Article):
