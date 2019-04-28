@@ -13,7 +13,7 @@ withdrawarticles.short_description = "Withdraw articles"
 
 class ArticleAdmin(admin.ModelAdmin):
 
-    fields = ('title', 'text', 'is_published', 'user')
+    fields = ('title', 'text', 'is_published', 'user', 'likes')
     readonly_fields = ('user',)
 
     # def save_model(self, request, obj, form, change):

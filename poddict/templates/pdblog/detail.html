@@ -3,35 +3,16 @@
 {% block contents %}
 
   <div class="post">
-      <h1>
-        {{ article_detail.title }}
-      </h1>
-      <span class="pubdate">{{ article_detail.pub_date }}</span>
+      <h1>{{ article_detail.title }}</h1>
+      <p>{{ article_detail.likes.count  }} <a href="{{ article_detail.get_like_url }}">Like</a>  </p>
+
+      <p><span class="pubdate">{{ article_detail.pub_date }}</span></p>
       <p class="text">{{ article_detail.text|linebreaksbr }}</p>
   </div>
-
-  <input type="button" id="favorites" name="{{ article_slug }} value="Favorite!" />
 
   {% if request.user.is_authenticated %}
   <div><a href="{% url 'pdblog:article_update' article_detail.pk %}">edit this article</a></div>
   <div><a href="{% url 'pdblog:article_delete' article_detail.pk %}">delete this article</a></div>
   {% endif %}
 
-  <script>
-  $('#favorites').click(function(){
-      $.ajax({
-              type: "POST".
-              url: "{% url 'favorites' %}",
-              data: {'slug': $(this).attr('title'), 'csrfmiddlewaretoken': '{{ csrf_token }}'},
-              dataType: "json",
-              success: function(response) {
-                    alert(response.message);
-                    alert('Favorites' + response.favorites);
-              },
-              error: function(rs, e) {
-                    alert(rs.responseText)
-              }
-          });
-      })
-  </script>
 {% endblock contents %}

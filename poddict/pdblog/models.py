@@ -2,6 +2,7 @@ import datetime
 from django.db import models
 from django.utils import timezone
 from django.core.mail import send_mail
+from django.urls import reverse
 from register.models import User
 from django.template.defaultfilters import slugify
 # Create your models here.
@@ -23,14 +24,20 @@ class Article(models.Model):
     pub_date = models.DateTimeField('date published', auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_published = models.BooleanField(default=False)
-    favorites = models.ManyToManyField(User, related_name='favorites')
     slug = models.SlugField(default="")
+    likes = models.ManyToManyField(User, blank=True, related_name="article_likes")
     # comments = models.TextField(max_length=140)
     #uses custom manager for general view
     objects = ArticleManager()
 
     def __str__(self):
         return self.title
+
+    def get_like_url(self):
+        return reverse("pdblog:like_toggle", kwargs={'pk':self.pk})
+
+    def get_api_like_url(self):
+        return reverse("pdblog:like_api_toggle", kwargs={'pk':self.pk})
 
     @property
     def total_fav(self):

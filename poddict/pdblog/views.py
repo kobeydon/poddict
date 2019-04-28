@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
+from django.views.generic import RedirectView
 from django.http import Http404, HttpResponseBadRequest, HttpResponse
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
@@ -11,11 +12,6 @@ from django.views.decorators.http import require_POST
 from .models import Article
 from register.models import User
 from .forms import ArticleForm, ContactForm
-try:
-    from django.utils import simplejson as json
-except ImportError:
-    import json
-
 
 class ArticleList(ListView):
     model = Article
@@ -32,6 +28,54 @@ def article_view(request, article_id, template_name='pdblog/detail.html'):
     target_article = get_object_or_404(Article, pk=article_id)
     data = { 'article_detail' : target_article }
     return render(request, template_name, data)
+
+class ArticleLikeToggle(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        obj = get_object_or_404(Article, pk=kwargs['pk'])
+        print(obj.title)
+        url_ = resolve_url('pdblog:article_view', kwargs['pk'])
+        user = self.request.user
+        if user.is_authenticated:
+            if user in obj.likes.all() :
+                obj.likes.remove(user)
+            else:
+                obj.likes.add(user)
+        return url_
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+from django.contrib.auth.models import User
+
+class ArticleLikeApiToggle(APIView):
+    """
+    View to list all users in the system.
+
+    * Requires token authentication.
+    * Only admin users are able to access this view.
+    """
+    authentication_classes = (authentication.SessionAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request, format=None, **kwargs):
+        obj = get_object_or_404(Article, pk=kwargs['pk'])
+        url_ = resolve_url('pdblog:article_view', kwargs['pk'])
+        user = self.request.user
+        updated = False
+        liked = False
+        data = {
+            "updated" : updated,
+            "liked": liked
+        }
+        if user.is_authenticated:
+            if user in obj.likes.all():
+                liked = False
+                obj.likes.remove(user)
+            else:
+                obj.likes.add(user)
+                liked = True
+            updated = True
+        return Response(data)
 
 class ArticleCreate(LoginRequiredMixin, CreateView):
     model = Article
@@ -121,24 +165,6 @@ def contactformsend(request):
         form = ContactForm()
     return render(request, 'pdblog/contactform.html', {'form': form})
 
-@login_required
-@require_POST
-def favorites(request):
-    if request.method == 'POST':
-        user = requset.user
-        slug = request.POST.get('slug', None)
-        article = get_object_or_404(Artilce, slug=slug)
 
-        if article.favorites.filter(id=user.id).exsists():
-            article.favorites.remove(user)
-            message='Not favorite'
-
-        else:
-            article.favorites.add(user)
-            message = 'Favorite'
-
-    data={'favorites': article.total_fav, 'message': message }
-
-    return HttpResponse(json.dumps(data), content_type='application/json')
 
 
