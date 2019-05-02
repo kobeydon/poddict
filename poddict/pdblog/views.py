@@ -9,6 +9,11 @@ from django.http import Http404, HttpResponseBadRequest, HttpResponse
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+from django.contrib.auth.models import User
+
 from .models import Article
 from register.models import User
 from .forms import ArticleForm, ContactForm
@@ -42,17 +47,10 @@ class ArticleLikeToggle(RedirectView):
                 obj.likes.add(user)
         return url_
 
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import authentication, permissions
-from django.contrib.auth.models import User
 
 class ArticleLikeApiToggle(APIView):
     """
-    View to list all users in the system.
-
     * Requires token authentication.
-    * Only admin users are able to access this view.
     """
     authentication_classes = (authentication.SessionAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
@@ -63,10 +61,6 @@ class ArticleLikeApiToggle(APIView):
         user = self.request.user
         updated = False
         liked = False
-        data = {
-            "updated" : updated,
-            "liked": liked
-        }
         if user.is_authenticated:
             if user in obj.likes.all():
                 liked = False
@@ -75,6 +69,10 @@ class ArticleLikeApiToggle(APIView):
                 obj.likes.add(user)
                 liked = True
             updated = True
+        data = {
+            "updated" : updated,
+            "liked": liked
+        }
         return Response(data)
 
 class ArticleCreate(LoginRequiredMixin, CreateView):

@@ -1,10 +1,31 @@
 {% extends "pdblog/base.html" %}
 
+{% block jquery %}
+<script>
+$(".like-btn").click(function(e){
+	e.preventDefault()
+	var this_ = $(this)
+	var likeUrl = this_attr("data-href")
+	$.ajax({
+		url: likeUrl,
+		method: "GET",
+		data: {},
+		success: function(data){
+			console.log(data)
+		}, error: function(error){
+			console.log(error)
+			console.log("error")
+		}
+	})
+})
+</script>
+{% endblock %}
+
 {% block contents %}
 
   <div class="post">
       <h1>{{ article_detail.title }}</h1>
-      <p>{{ article_detail.likes.count  }} <a href="{{ article_detail.get_like_url }}">Like</a>  </p>
+      <p>{{ article_detail.likes.count }}<a class='btn btn-primary' data-href="{{ article_detail.get_api_like_url }}">like</a></p>
 
       <p><span class="pubdate">{{ article_detail.pub_date }}</span></p>
       <p class="text">{{ article_detail.text|linebreaksbr }}</p>
