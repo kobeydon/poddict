@@ -56,7 +56,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/Kohei/pythonprojects/myenv2"
+set -gx VIRTUAL_ENV "/data/data/com.termux/files/home/pythonproject/myenvdroid"
 
 # https://github.com/fish-shell/fish-shell/issues/436 altered PATH handling
 if test (echo $FISH_VERSION | tr "." "\n")[1] -lt 3

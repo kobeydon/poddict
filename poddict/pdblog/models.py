@@ -22,7 +22,7 @@ class Article(models.Model):
     title = models.CharField(max_length=128)
     text = models.TextField(default="")
     pub_date = models.DateTimeField('date published', auto_now=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
     is_published = models.BooleanField(default=False)
     slug = models.SlugField(default="")
     likes = models.ManyToManyField(User, blank=True, related_name="article_likes")
@@ -32,6 +32,9 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("pdblog:article_view", kwargs={'article_id':self.pk})
 
     def get_like_url(self):
         return reverse("pdblog:like_toggle", kwargs={'pk':self.pk})

@@ -1,1 +1,1 @@
-/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/bisect.py
+/data/data/com.termux/files/usr/lib/python3.7/bisect.py
