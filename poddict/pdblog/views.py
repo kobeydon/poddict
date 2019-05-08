@@ -12,7 +12,6 @@ from django.views.decorators.http import require_POST
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
-from django.contrib.auth.models import User
 
 from .models import Article
 from register.models import User
@@ -37,11 +36,10 @@ def article_view(request, article_id, template_name='pdblog/detail.html'):
 class ArticleLikeToggle(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         obj = get_object_or_404(Article, pk=kwargs['pk'])
-        print(obj.title)
         url_ = resolve_url('pdblog:article_view', kwargs['pk'])
         user = self.request.user
         if user.is_authenticated:
-            if user in obj.likes.all() :
+            if user in obj.likes.all():
                 obj.likes.remove(user)
             else:
                 obj.likes.add(user)
@@ -56,24 +54,27 @@ class ArticleLikeApiToggle(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request, format=None, **kwargs):
-        obj = get_object_or_404(Article, pk=kwargs['pk'])
-        url_ = resolve_url('pdblog:article_view', kwargs['pk'])
-        user = self.request.user
-        updated = False
-        liked = False
-        if user.is_authenticated:
+            obj = get_object_or_404(Article, pk=kwargs['pk'])
+            url_ = obj.get_absolute_url()
+            user = self.request.user
+            status = request.GET.getlist('status')
+            status = bool(int(status[0]))
             if user in obj.likes.all():
-                liked = False
-                obj.likes.remove(user)
+                if not(status):
+                    liked = True
+                else:
+                    obj.likes.remove(user)
+                    liked = False
             else:
-                obj.likes.add(user)
-                liked = True
-            updated = True
-        data = {
-            "updated" : updated,
-            "liked": liked
-        }
-        return Response(data)
+                if not(status):
+                    liked = False
+                else:
+                    obj.likes.add(user)
+                    liked = True
+            data = {
+                "liked": liked,
+            }
+            return Response(data)
 
 class ArticleCreate(LoginRequiredMixin, CreateView):
     model = Article

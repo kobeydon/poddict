@@ -25,7 +25,7 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
-$VIRTUAL_ENV = r"/Users/Kohei/pythonprojects/myenv2"
+$VIRTUAL_ENV = r"/data/data/com.termux/files/home/pythonproject/myenvdroid"
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]

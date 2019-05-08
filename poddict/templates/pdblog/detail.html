@@ -1,33 +1,13 @@
 {% extends "pdblog/base.html" %}
 
-{% block jquery %}
-<script>
-$(".like-btn").click(function(e){
-	e.preventDefault()
-	var this_ = $(this)
-	var likeUrl = this_attr("data-href")
-	$.ajax({
-		url: likeUrl,
-		method: "GET",
-		data: {},
-		success: function(data){
-			console.log(data)
-		}, error: function(error){
-			console.log(error)
-			console.log("error")
-		}
-	})
-})
-</script>
-{% endblock %}
-
 {% block contents %}
 
   <div class="post">
       <h1>{{ article_detail.title }}</h1>
-      <p>{{ article_detail.likes.count }}<a class='btn btn-primary' data-href="{{ article_detail.get_api_like_url }}">like</a></p>
-
-      <p><span class="pubdate">{{ article_detail.pub_date }}</span></p>
+      <p class='like-btn' data-href='{{ article_detail.get_api_like_url }}'>
+      <span class="liked_cnt">{{ article_detail.likes.count }}</span>
+      like</P>
+      <div>&nbsp;{{ article_detail.pub_date }}</div>
       <p class="text">{{ article_detail.text|linebreaksbr }}</p>
   </div>
 
@@ -35,5 +15,48 @@ $(".like-btn").click(function(e){
   <div><a href="{% url 'pdblog:article_update' article_detail.pk %}">edit this article</a></div>
   <div><a href="{% url 'pdblog:article_delete' article_detail.pk %}">delete this article</a></div>
   {% endif %}
-
+  
+	<script>
+		(function(){
+			const this_ = $(".like-btn");
+			const likeUrl = tthis_attr("data-href");
+			$.ajax({
+				url: likeUrl,
+				method: "GET", 
+				data: {"status":0},
+				success: function(data){
+					if (data.liked){
+						this_addClass("on");
+					}
+				}, error: function(error){
+					console.log("error")
+				}
+			})
+		});
+		$(".like-btn").click(function(e){
+			e.preventDefault()
+			const this_ = $(this);
+			const like_cnt = $(".liked_cnt");
+			const likeUrl = this_.attr("data-href");
+			if (likeUrl){
+				$.ajax({
+					url: likeUrl,
+					method: "GET",
+					data: {"status":1},
+					success: function(data){
+						let change_like = like_cnt.text();
+						if (data.liked){
+							like_cnt.text(++change_like);
+							this_.addClass("on");
+						} else { 
+							like_cnt.text(--change_like);
+							this_.removeClass("on");
+						}
+					}, error: function(error){
+						console.log("error")
+					}
+				})
+			}
+		})
+	</script>
 {% endblock contents %}

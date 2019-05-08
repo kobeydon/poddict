@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/Users/Kohei/pythonprojects/myenv2/bin/python3.7
+=======
+#!/data/data/com.termux/files/home/pythonproject/myenvdroid/bin/python
+>>>>>>> refs/remotes/origin/master
 # -*- coding: utf-8 -*-
 import re
 import sys
