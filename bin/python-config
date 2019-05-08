@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/home/pythonproject/myenvdroid/bin/python
+#!/Users/Kohei/pythonprojects/myenv1/bin/python
 
 import sys
 import getopt

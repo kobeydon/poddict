@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/home/pythonproject/myenvdroid/bin/python
+#!/Users/Kohei/pythonprojects/myenv1/bin/python
 from django.core import management
 
 if __name__ == "__main__":
