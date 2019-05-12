@@ -33,17 +33,17 @@ def article_view(request, article_id, template_name='pdblog/detail.html'):
     data = { 'article_detail' : target_article }
     return render(request, template_name, data)
 
-class ArticleLikeToggle(RedirectView):
-    def get_redirect_url(self, *args, **kwargs):
-        obj = get_object_or_404(Article, pk=kwargs['pk'])
-        url_ = resolve_url('pdblog:article_view', kwargs['pk'])
-        user = self.request.user
-        if user.is_authenticated:
-            if user in obj.likes.all():
-                obj.likes.remove(user)
-            else:
-                obj.likes.add(user)
-        return url_
+#class ArticleLikeToggle(RedirectView):
+#    def get_redirect_url(self, *args, **kwargs):
+#        obj = get_object_or_404(Article, pk=kwargs['pk'])
+#        url_ = resolve_url('pdblog:article_view', kwargs['pk'])
+#        user = self.request.user
+#        if user.is_authenticated:
+#            if user in obj.likes.all():
+#                obj.likes.remove(user)
+#            else:
+#                obj.likes.add(user)
+#        return url_
 
 
 class ArticleLikeApiToggle(APIView):

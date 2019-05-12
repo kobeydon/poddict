@@ -4,7 +4,7 @@
 
   <div class="post">
       <h1>{{ article_detail.title }}</h1>
-      <p class="like-btn btn btn-primary btn-sm" data-href="{{ article_detail.get_api_like_url }}"">
+      <p class="like-btn btn btn-primary btn-sm" data-href="{{ article_detail.get_api_like_url }}">
       <span class="liked_cnt">{{ article_detail.likes.count }}</span>
       like</P>
       <div>&nbsp;{{ article_detail.pub_date }}</div>
@@ -12,8 +12,8 @@
   </div>
 
   {% if request.user.is_authenticated %}
-  <div><a href="{% url 'pdblog:article_update' article_detail.pk %}">edit this article</a></div>
-  <div><a href="{% url 'pdblog:article_delete' article_detail.pk %}">delete this article</a></div>
+  <div><a href="{% url 'pdblog:article_update' article_detail.pk %}">Edit</a></div>
+  <div><a href="{% url 'pdblog:article_delete' article_detail.pk %}">Delete</a></div>
   {% endif %}
 
 	<script>
