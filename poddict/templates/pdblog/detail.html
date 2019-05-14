@@ -7,6 +7,7 @@
       <p class="like-btn btn btn-primary btn-sm" data-href="{{ article_detail.get_api_like_url }}">
       <span class="liked_cnt">{{ article_detail.likes.count }}</span>
       like</P>
+      <p id="error"></p>
       <div>&nbsp;{{ article_detail.pub_date }}</div>
       <p class="text">{{ article_detail.text|linebreaksbr }}</p>
   </div>
@@ -17,16 +18,16 @@
   {% endif %}
 
 	<script>
-		(function(){
+		$(function(){
 			const this_ = $(".like-btn");
-			const likeUrl = tthis_attr("data-href");
+			const likeUrl = this_.attr("data-href");
 			$.ajax({
 				url: likeUrl,
 				method: "GET",
 				data: {"status":0},
 				success: function(data){
 					if (data.liked){
-						this_addClass("on");
+						this_.addClass("on");
 					}
 				}, error: function(error){
 					console.log("error")
@@ -54,6 +55,8 @@
 						}
 					}, error: function(error){
 						console.log("error")
+            document.getElementById("error").innerHTML = "Please log in to like this blog <br> Likeするにはログインが必要です。";
+            return false;
 					}
 				})
 			}
