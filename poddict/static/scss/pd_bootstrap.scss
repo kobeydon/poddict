@@ -41,16 +41,13 @@
 @import "utilities";
 @import "print";
 
-
-body > .container {
-  padding-top: 90px;
-  padding-bottom: 90px;
-}
-
 .post > .pubdate {
-  padding-top:25px;
   color: gray;
 }
 .post > .text {
-  padding-top: 35px;
+  padding-top: 15px;
+}
+.pdtitle {
+  font-style:italic;
+  font-size: 24px;
 }

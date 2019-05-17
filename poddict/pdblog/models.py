@@ -26,7 +26,7 @@ class Article(models.Model):
     is_published = models.BooleanField(default=False)
     slug = models.SlugField(default="")
     likes = models.ManyToManyField(User, blank=True, related_name="article_likes")
-    # comments = models.TextField(max_length=140)
+    #comments = models.TextField(max_length=140)
     #uses custom manager for general view
     objects = ArticleManager()
 

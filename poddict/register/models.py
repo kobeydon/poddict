@@ -15,7 +15,7 @@ if settings.AUTH_USER_MODEL == 'register.User':
         def _create_user(self, email, password, **extra_fields):
             # User must register their mail-address
             if not email:
-                raise ValueError('The given email mush be set')
+                raise ValueError('The given email must be set')
             email = self.normalize_email(email)
 
             user = self.model(email=email, **extra_fields)

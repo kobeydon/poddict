@@ -4,22 +4,14 @@
 {% if user.is_authenticated %}
 <div> <a class="btn btn-info" href="{% url 'pdblog:article_create' %}"">create blog</a></div>
 {% endif %}
+<hr>
   <table class="table">
-    <tr>
-      <th>Title</th>
-      <th>Date</th>
-      <th>Author</th>
-      <th>Detail</th>
-      <th>Published</th>
-    </tr>
     {% for article in object_list %}
     <tr>
-      <td>{{ article.title }}</td>
+      <td><a href="{% url 'pdblog:article_view' article.pk %}">{{ article.title }}</a></td>
       <td>{{ article.pub_date }}</td>
-      <td>{{ article.user}}</td>
-      <td><a href="{% url 'pdblog:article_view' article.pk %}">Check This Blog</a>
-      <td>{{ article.is_published }}
-    </tr>
+      <td>{{ article.user.first_name}}</td>
+  </tr>
     {% endfor %}
   </table>
 

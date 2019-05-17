@@ -3,12 +3,14 @@
 {% block contents %}
 
   <div class="post">
-      <h1>{{ article_detail.title }}</h1>
-      <p class="like-btn btn btn-primary btn-sm" data-href="{{ article_detail.get_api_like_url }}">
+      <h1 class="pdtitle">{{ article_detail.title }}</h1>
+      <div class="like-btn btn btn-outline-primary btn-sm" data-href="{{ article_detail.get_api_like_url }}">
       <span class="liked_cnt">{{ article_detail.likes.count }}</span>
-      like</P>
-      <p id="error"></p>
-      <div>&nbsp;{{ article_detail.pub_date }}</div>
+      like</div>
+      <div id="error" class="text-warning"></div>
+      <div class="pubdate">&nbsp;Published:{{ article_detail.pub_date|date:"n.t Y" }}<span>&nbsp; by {{ article_detail.user.last_name }}</span></div>
+
+      <hr>
       <p class="text">{{ article_detail.text|linebreaksbr }}</p>
   </div>
 
@@ -27,7 +29,7 @@
 				data: {"status":0},
 				success: function(data){
 					if (data.liked){
-						this_.addClass("on");
+						this_.addClass("btn-outline-danger");
 					}
 				}, error: function(error){
 					console.log("error")
@@ -48,10 +50,10 @@
 						let change_like = like_cnt.text();
 						if (data.liked){
 							like_cnt.text(++change_like);
-							this_.addClass("on");
+							this_.addClass("btn-outline-danger");
 						} else {
 							like_cnt.text(--change_like);
-							this_.removeClass("on");
+							this_.removeClass("btn-outline-danger");
 						}
 					}, error: function(error){
 						console.log("error")
