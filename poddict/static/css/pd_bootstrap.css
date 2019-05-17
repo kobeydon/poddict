@@ -7360,3 +7360,6 @@ a.text-dark:hover, a.text-dark:focus {
 .pdtitle {
   font-style: italic;
   font-size: 24px; }
+
+.td_pdtitle {
+  max-width: 155px; }
