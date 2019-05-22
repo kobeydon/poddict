@@ -13,8 +13,12 @@ class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
-            field.widget.attrs['class'] = 'form-control'
-            field.widget.attrs['placeholder'] = field.label
+            if field.label == 'Password':
+                field.widget.attrs['class'] = 'form-control input_pass'
+                field.widget.attrs['placeholder'] = field.label
+            else:
+                field.widget.attrs['class'] = 'form-control input_user'
+                field.widget.attrs['placeholder'] = field.label
 
 class UserCreateForm(UserCreationForm):
     """Form to Create User"""
@@ -22,7 +26,7 @@ class UserCreateForm(UserCreationForm):
     class Meta:
         model = User
         if User.USERNAME_FIELD == 'email':
-            fields = ('email',)
+            fields = ('email', 'first_name', 'last_name')
         else:
             fields = ('username', 'email')
 

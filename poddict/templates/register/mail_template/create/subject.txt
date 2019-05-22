@@ -1,1 +1,1 @@
-PODDICT User Authentication
+PODDICT Account Confirmation:Emailアドレスのご確認。

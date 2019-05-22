@@ -1,26 +1,42 @@
 {% extends "base.html" %}
 
 {% block contents %}
-<div class="row">
-  <div class="card col-md-6">
-    <div class="card-body">
-      <form action="{% url 'register:login' %}" method="POST">
-        {{ form.non_field_errors }}
-        {% for field in form %}
-          {{ field }}
-          {{ field.errors }}
-          <hr>
-        {% endfor %}
-        <button type="submit" class="btn btn-success btn-lg btn-block">ログイン</button>
-        <input type="hidden" name="next" value="{{ next }}" />
-        {% csrf_token %}
-      </form>
-    </div>
-  </div>
 
-  <div class="card col-md-6">
-    <div class="card-body">
-      <a href="{% url 'register:user_create' %}" class="btn btn-success btn-;g btn-block"> 会員登録 </a>
+<div class="container h-100">
+  <div class="d-flex justify-content-center">
+    <div class="pd_card">
+      <div class="card-body">
+        <form action="{% url 'register:login' %}" method="POST">
+          {{ form.non_field_errors }}
+          {% for field in form %}
+            {% if field.name == 'username' %}
+              <div class="input-group mb-3">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                  </div>
+                    {{ field }}
+                    {{ field.errors }}
+                  </div>
+            {% else %}
+              <div class="input-group mb-3">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                  </div>
+                    {{ field }}
+                    {{ field.errors }}
+                  </div>
+            {% endif %}
+
+          {% endfor %}
+          <hr>
+          <button type="submit" class="btn btn-outline-success btn-md btn-block">Login</button>
+          <input type="hidden" name="next" value="{{ next }}" />
+          <div class="d-flex justify-content-center regist-text">
+            会員登録はこちら<br>Don't have an account? </div>
+            <div class="btn btn-outline-primary btn-md btn-block"><a href="{% url 'register:user_create' %}"> Sign Up </a></div>
+          {% csrf_token %}
+        </form>
+      </div>
     </div>
   </div>
 </div>

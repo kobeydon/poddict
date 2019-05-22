@@ -12,9 +12,9 @@
     <title>poddict</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/sticky-footer-navbar.css' %}" rel="stylesheet">
     <link href="{% static 'css/pd_bootstrap.css' %}" rel="stylesheet">
-
+    <!-- fontawesome 5 CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <style>
         .on { background: #F75D5D; color: #fff; }
@@ -28,7 +28,7 @@
 
     <header>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-teal">
         <a class="navbar-brand" href="{% url 'pdblog:article_list' %}">PODDICT</a>
         <small style="Color:white">podcast and tech addicts</small>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,13 +60,13 @@
 
 
     <!-- Begin page content -->
-    <main role="main" class="container mt-3">
+    <main role="main" class="container mt-6">
         {% block contents %}{% endblock %}
     </main>
 
-    <footer class="footer">
+    <footer class="pdfooter">
       <div class="container">
-        <span class="text-muted"> FOOTER CONTENTS TO BE PLACED HERE </span>
+        <span> FOOTER CONTENTS TO BE PLACED HERE </span>
       </div>
     </footer>
     <!-- Bootstrap core JavaScript

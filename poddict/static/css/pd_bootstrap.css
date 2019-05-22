@@ -6270,6 +6270,25 @@ button.bg-dark:focus {
 .mx-5 {
   margin-left: 3rem !important; }
 
+.m-6 {
+  margin: 4rem !important; }
+
+.mt-6,
+.my-6 {
+  margin-top: 4rem !important; }
+
+.mr-6,
+.mx-6 {
+  margin-right: 4rem !important; }
+
+.mb-6,
+.my-6 {
+  margin-bottom: 4rem !important; }
+
+.ml-6,
+.mx-6 {
+  margin-left: 4rem !important; }
+
 .p-0 {
   padding: 0 !important; }
 
@@ -6384,6 +6403,25 @@ button.bg-dark:focus {
 .px-5 {
   padding-left: 3rem !important; }
 
+.p-6 {
+  padding: 4rem !important; }
+
+.pt-6,
+.py-6 {
+  padding-top: 4rem !important; }
+
+.pr-6,
+.px-6 {
+  padding-right: 4rem !important; }
+
+.pb-6,
+.py-6 {
+  padding-bottom: 4rem !important; }
+
+.pl-6,
+.px-6 {
+  padding-left: 4rem !important; }
+
 .m-auto {
   margin: auto !important; }
 
@@ -6488,6 +6526,20 @@ button.bg-dark:focus {
   .ml-sm-5,
   .mx-sm-5 {
     margin-left: 3rem !important; }
+  .m-sm-6 {
+    margin: 4rem !important; }
+  .mt-sm-6,
+  .my-sm-6 {
+    margin-top: 4rem !important; }
+  .mr-sm-6,
+  .mx-sm-6 {
+    margin-right: 4rem !important; }
+  .mb-sm-6,
+  .my-sm-6 {
+    margin-bottom: 4rem !important; }
+  .ml-sm-6,
+  .mx-sm-6 {
+    margin-left: 4rem !important; }
   .p-sm-0 {
     padding: 0 !important; }
   .pt-sm-0,
@@ -6572,6 +6624,20 @@ button.bg-dark:focus {
   .pl-sm-5,
   .px-sm-5 {
     padding-left: 3rem !important; }
+  .p-sm-6 {
+    padding: 4rem !important; }
+  .pt-sm-6,
+  .py-sm-6 {
+    padding-top: 4rem !important; }
+  .pr-sm-6,
+  .px-sm-6 {
+    padding-right: 4rem !important; }
+  .pb-sm-6,
+  .py-sm-6 {
+    padding-bottom: 4rem !important; }
+  .pl-sm-6,
+  .px-sm-6 {
+    padding-left: 4rem !important; }
   .m-sm-auto {
     margin: auto !important; }
   .mt-sm-auto,
@@ -6672,6 +6738,20 @@ button.bg-dark:focus {
   .ml-md-5,
   .mx-md-5 {
     margin-left: 3rem !important; }
+  .m-md-6 {
+    margin: 4rem !important; }
+  .mt-md-6,
+  .my-md-6 {
+    margin-top: 4rem !important; }
+  .mr-md-6,
+  .mx-md-6 {
+    margin-right: 4rem !important; }
+  .mb-md-6,
+  .my-md-6 {
+    margin-bottom: 4rem !important; }
+  .ml-md-6,
+  .mx-md-6 {
+    margin-left: 4rem !important; }
   .p-md-0 {
     padding: 0 !important; }
   .pt-md-0,
@@ -6756,6 +6836,20 @@ button.bg-dark:focus {
   .pl-md-5,
   .px-md-5 {
     padding-left: 3rem !important; }
+  .p-md-6 {
+    padding: 4rem !important; }
+  .pt-md-6,
+  .py-md-6 {
+    padding-top: 4rem !important; }
+  .pr-md-6,
+  .px-md-6 {
+    padding-right: 4rem !important; }
+  .pb-md-6,
+  .py-md-6 {
+    padding-bottom: 4rem !important; }
+  .pl-md-6,
+  .px-md-6 {
+    padding-left: 4rem !important; }
   .m-md-auto {
     margin: auto !important; }
   .mt-md-auto,
@@ -6856,6 +6950,20 @@ button.bg-dark:focus {
   .ml-lg-5,
   .mx-lg-5 {
     margin-left: 3rem !important; }
+  .m-lg-6 {
+    margin: 4rem !important; }
+  .mt-lg-6,
+  .my-lg-6 {
+    margin-top: 4rem !important; }
+  .mr-lg-6,
+  .mx-lg-6 {
+    margin-right: 4rem !important; }
+  .mb-lg-6,
+  .my-lg-6 {
+    margin-bottom: 4rem !important; }
+  .ml-lg-6,
+  .mx-lg-6 {
+    margin-left: 4rem !important; }
   .p-lg-0 {
     padding: 0 !important; }
   .pt-lg-0,
@@ -6940,6 +7048,20 @@ button.bg-dark:focus {
   .pl-lg-5,
   .px-lg-5 {
     padding-left: 3rem !important; }
+  .p-lg-6 {
+    padding: 4rem !important; }
+  .pt-lg-6,
+  .py-lg-6 {
+    padding-top: 4rem !important; }
+  .pr-lg-6,
+  .px-lg-6 {
+    padding-right: 4rem !important; }
+  .pb-lg-6,
+  .py-lg-6 {
+    padding-bottom: 4rem !important; }
+  .pl-lg-6,
+  .px-lg-6 {
+    padding-left: 4rem !important; }
   .m-lg-auto {
     margin: auto !important; }
   .mt-lg-auto,
@@ -7040,6 +7162,20 @@ button.bg-dark:focus {
   .ml-xl-5,
   .mx-xl-5 {
     margin-left: 3rem !important; }
+  .m-xl-6 {
+    margin: 4rem !important; }
+  .mt-xl-6,
+  .my-xl-6 {
+    margin-top: 4rem !important; }
+  .mr-xl-6,
+  .mx-xl-6 {
+    margin-right: 4rem !important; }
+  .mb-xl-6,
+  .my-xl-6 {
+    margin-bottom: 4rem !important; }
+  .ml-xl-6,
+  .mx-xl-6 {
+    margin-left: 4rem !important; }
   .p-xl-0 {
     padding: 0 !important; }
   .pt-xl-0,
@@ -7124,6 +7260,20 @@ button.bg-dark:focus {
   .pl-xl-5,
   .px-xl-5 {
     padding-left: 3rem !important; }
+  .p-xl-6 {
+    padding: 4rem !important; }
+  .pt-xl-6,
+  .py-xl-6 {
+    padding-top: 4rem !important; }
+  .pr-xl-6,
+  .px-xl-6 {
+    padding-right: 4rem !important; }
+  .pb-xl-6,
+  .py-xl-6 {
+    padding-bottom: 4rem !important; }
+  .pl-xl-6,
+  .px-xl-6 {
+    padding-left: 4rem !important; }
   .m-xl-auto {
     margin: auto !important; }
   .mt-xl-auto,
@@ -7363,3 +7513,91 @@ a.text-dark:hover, a.text-dark:focus {
 
 .td_pdtitle {
   max-width: 155px; }
+
+/* Coded with love by Mutiullah Samim */
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px; }
+
+.pd_card {
+  height: 400px;
+  width: 380px;
+  margin-top: 30px;
+  margin-bottom: auto;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px; }
+
+.brand_logo {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 2px solid white; }
+
+.login_btn {
+  width: 100%; }
+
+.login_btn:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline: 0px !important; }
+
+.login_container {
+  padding: 0 2rem; }
+
+.input-group-text {
+  border: 0 !important;
+  border-radius: 0.25rem 0 0 0.25rem !important; }
+
+.input_user,
+.input_pass:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline: 0px !important; }
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #c0392b !important; }
+
+.btn-outline-primary:hover a:link {
+  color: #FFF; }
+
+.regist-text {
+  text-align: center;
+  font-size: 14px;
+  color: gray;
+  padding-top: 15px; }
+
+.pdfooter {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px;
+  /* Vertically center the text there */
+  color: white;
+  background-color: teal; }
+
+.pdfooter > .container {
+  padding-right: 15px;
+  padding-left: 15px; }
+
+.bg-teal {
+  background-color: teal; }
