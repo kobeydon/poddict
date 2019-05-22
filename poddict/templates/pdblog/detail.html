@@ -4,7 +4,7 @@
 
   <div class="post">
       <h1 class="pdtitle">{{ article_detail.title }}</h1>
-      <div class="like-btn btn btn-outline-primary btn-sm" data-href="{{ article_detail.get_api_like_url }}">
+      <div class="like-btn btn btn-outline-primary btn-sm mt-3" data-href="{{ article_detail.get_api_like_url }}">
       <span class="liked_cnt">{{ article_detail.likes.count }}</span>
       like</div>
       <div id="error" class="text-warning"></div>
@@ -14,9 +14,9 @@
       <p class="text">{{ article_detail.text|linebreaksbr }}</p>
   </div>
 
-  {% if request.user.is_authenticated %}
-  <div><a href="{% url 'pdblog:article_update' article_detail.pk %}">Edit</a></div>
-  <div><a href="{% url 'pdblog:article_delete' article_detail.pk %}">Delete</a></div>
+  {% if request.user == article_detail.user %}
+  <div class="btn btn-outline-primary"><a href="{% url 'pdblog:article_update' article_detail.pk %}">Edit</a></div>
+  <div class="btn btn-outline-danger"><a href="{% url 'pdblog:article_delete' article_detail.pk %}">Delete</a></div>
   {% endif %}
 
 	<script>

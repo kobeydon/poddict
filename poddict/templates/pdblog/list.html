@@ -2,13 +2,13 @@
 
 {% block contents %}
 {% if user.is_authenticated %}
-<div> <a class="btn btn-outline-info" href="{% url 'pdblog:article_create' %}">create blog</a></div>
+<div> <a class="btn btn-outline-info mb-3" href="{% url 'pdblog:article_create' %}">create blog</a></div>
 {% endif %}
   <table class="table">
     {% for article in object_list %}
     <tr>
       <td class="td_pdtitle"><a href="{% url 'pdblog:article_view' article.pk %}">{{ article.title }}</a></td>
-      <td>{{ article.pub_date|date:"M.d y" }}</td>
+      <td>{{ article.pub_date|date:"M d Y" }}</td>
       <td>{{ article.user.first_name}}</td>
   </tr>
     {% endfor %}
