@@ -13,6 +13,7 @@
       <hr>
       <p class="text">{{ article_detail.text|linebreaksbr }}</p>
   </div>
+  <div> {{ article.comment_set.all }} </div>
 
   {% if request.user == article_detail.user %}
   <div><a href="{% url 'pdblog:article_update' article_detail.pk %}"><button class="btn btn-outline-primary">Edit</button></a>

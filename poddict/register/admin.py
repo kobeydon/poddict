@@ -40,4 +40,4 @@ if settings.AUTH_USER_MODEL == 'register.User':
         search_fields = ('email', 'user_name', 'first_name','last_name')
         ordering = ('email',)
 
-    admin.site.register(User, MyUserAdmin)
+        admin.site.register(User, MyUserAdmin)

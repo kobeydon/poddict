@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, AllArticles
+from .models import Article, AllArticles, Comment, AllComments
 
 def publisharticles(modeladmin, request, queryset):
     queryset.update(is_published=True)

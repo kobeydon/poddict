@@ -38,7 +38,7 @@ if settings.AUTH_USER_MODEL == 'register.User':
             if extra_fields.get('is_staff') is not True:
                 raise ValueError('Superuser must have is_staff=True.')
             if extra_fields.get('is_superuser') is not True:
-                raise self._create_user(email,password,**extra_fields)
+                raise ValueError('Superuser must have is_superuser=True.')
 
             return self._create_user(email, password, **extra_fields)
 
@@ -48,7 +48,7 @@ if settings.AUTH_USER_MODEL == 'register.User':
         email = models.EmailField(_('email address'),unique=True)
         user_name=models.CharField(_('username'),max_length=30, unique=True)
         first_name = models.CharField(_('first name'),max_length=30)
-        last_name = models.CharField(_('last name'),max_length=150)
+        last_name = models.CharField(_('last name'),max_length=30)
 
         is_staff = models.BooleanField(
             _('staff status'),

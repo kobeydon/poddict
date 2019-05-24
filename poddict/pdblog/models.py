@@ -26,7 +26,7 @@ class Article(models.Model):
     is_published = models.BooleanField(default=False)
     slug = models.SlugField(default="")
     likes = models.ManyToManyField(User, blank=True, related_name="article_likes")
-    #comments = models.TextField(max_length=140)
+
     #uses custom manager for general view
     objects = ArticleManager()
 
@@ -51,9 +51,31 @@ class Article(models.Model):
         super().save(*args, **kwargs)
 
 
-
-
 class AllArticles(Article):
+    class Meta:
+        proxy = True
+
+    objects = models.Manager()
+
+class CommentManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_published=True)
+
+class Comment(models.Model):
+
+    class Meta:
+        verbose_name = 'Commnet'
+        verbose_name_plural = 'Comments'
+        ordering = ['-pub_date']
+        app_label = 'pdblog'
+
+    target_article = models.ForeignKey(Article, on_delete = models.CASCADE)
+    comment_text = models.TextField(max_length=300)
+    is_published = models.BooleanField(default=False)
+    pub_date = models.DateTimeField('published date', auto_now=True)
+    objects = CommentManager()
+
+class AllComments(Comment):
     class Meta:
         proxy = True
 
