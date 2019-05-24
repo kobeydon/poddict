@@ -31,11 +31,12 @@
           <hr>
           <button type="submit" class="btn btn-outline-success btn-md btn-block">Login</button>
           <input type="hidden" name="next" value="{{ next }}" />
-          <div class="d-flex justify-content-center regist-text">
-            会員登録はこちら<br>Don't have an account? </div>
-            <div class="btn btn-outline-primary btn-md btn-block"><a href="{% url 'register:user_create' %}"> Sign Up </a></div>
           {% csrf_token %}
         </form>
+          <div class="d-flex justify-content-center regist-text">
+            会員登録はこちら<br>Don't have an account? </div>
+            <div><a href="{% url 'register:user_create' %}"><button class="btn btn-outline-primary btn-md btn-block">Sign Up</button></a></div>
+
       </div>
     </div>
   </div>

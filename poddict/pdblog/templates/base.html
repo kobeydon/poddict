@@ -28,10 +28,10 @@
 
     <header>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-md fixed-top bg-outline-teal" style=width:99%;>
+      <nav class="navbar navbar-expand-md fixed-top bg-outline-teal" style=width:99%;margin-top:1px;>
         <a class="navbar-brand" href="{% url 'pdblog:article_list' %}">PODDICT</a>
         <small style="Color:teal">podcast and tech addicts</small>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-teal-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -47,10 +47,8 @@
             <li class="navbar-text">Signed in:{{ user }}</li>
 
             {% else %}
-            <li class="nav-item"><a class="nav-item nav-link" href="{% url 'register:login' %}">
-              Login.
-              </a>
-            </li>
+            <li><a class="nav-item nav-link" href="{% url 'register:login' %}">Login</a></li>
+            <li><a class="nav-item nav-link" href="{% url 'register:user_create' %}">SignUp</a></li>
             {% endif %}
           </ul>
 

@@ -46,7 +46,8 @@ if settings.AUTH_USER_MODEL == 'register.User':
         """Custom User Model."""
 
         email = models.EmailField(_('email address'),unique=True)
-        first_name = models.CharField(_('first name'),max_length=30,unique=True)
+        user_name=models.CharField(_('username'),max_length=30, unique=True)
+        first_name = models.CharField(_('first name'),max_length=30)
         last_name = models.CharField(_('last name'),max_length=150)
 
         is_staff = models.BooleanField(

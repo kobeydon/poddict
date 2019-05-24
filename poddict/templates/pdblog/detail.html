@@ -15,8 +15,8 @@
   </div>
 
   {% if request.user == article_detail.user %}
-  <div class="btn btn-outline-primary"><a href="{% url 'pdblog:article_update' article_detail.pk %}">Edit</a></div>
-  <div class="btn btn-outline-danger"><a href="{% url 'pdblog:article_delete' article_detail.pk %}">Delete</a></div>
+  <div><a href="{% url 'pdblog:article_update' article_detail.pk %}"><button class="btn btn-outline-primary">Edit</button></a>
+    <a href="{% url 'pdblog:article_delete' article_detail.pk %}"><button class="btn btn-outline-danger">Delete</button></a></div>
   {% endif %}
 
 	<script>

@@ -21,6 +21,7 @@ if settings.AUTH_USER_MODEL == 'register.User':
     class MyUserAdmin(UserAdmin):
         fieldsets = (
             (None, {'fields':('email', 'password')}),
+            (_('User Info'), {'fields':('user_name',)}),
             (_('Personal info'), {'fields':('first_name','last_name')}),
             (_('Permissions'),{'fields':('is_active','is_staff','is_superuser',
                                 'groups','user_permissions')}),
@@ -34,9 +35,9 @@ if settings.AUTH_USER_MODEL == 'register.User':
         )
         form = MyUserChangeForm
         add_form = MyUserCreationForm
-        list_display = ('email', 'first_name', 'last_name', 'is_staff')
+        list_display = ('email', 'user_name', 'first_name', 'last_name', 'is_staff')
         list_filter = ('is_staff', 'is_superuser', 'is_active','groups')
-        search_fields = ('email','first_name','last_name')
+        search_fields = ('email', 'user_name', 'first_name','last_name')
         ordering = ('email',)
 
     admin.site.register(User, MyUserAdmin)
