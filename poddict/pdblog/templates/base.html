@@ -44,7 +44,7 @@
             <li><a class="nav-item nav-link" href="{% url 'register:user_detail' user.pk %}">Profile</a></li>
             <li><a class="nav-item nav-link" href="{% url 'register:user_update' user.pk %}">Update</a></li>
             <li><a class="nav-item nav-link" href="{% url 'register:logout' %}">Logout</a></li>
-            <li class="navbar-text">Signed in:{{ user }}</li>
+            <li class="navbar-text">Signed in:{{ user.user_name }}</li>
 
             {% else %}
             <li><a class="nav-item nav-link" href="{% url 'register:login' %}">Login</a></li>

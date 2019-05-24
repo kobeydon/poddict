@@ -9,7 +9,7 @@
     <tr>
       <td class="td_pdtitle"><a href="{% url 'pdblog:article_view' article.pk %}">{{ article.title }}</a></td>
       <td>{{ article.pub_date|date:"M d Y" }}</td>
-      <td>{{ article.user.first_name}}</td>
+      <td>{{ article.user.user_name }}</td>
   </tr>
     {% endfor %}
   </table>
