@@ -12,8 +12,14 @@
 
       <hr>
       <p class="text">{{ article_detail.text|linebreaksbr }}</p>
+      <hr>
+      {% for c in valid_comments %}
+      <div> {{ c.comment_text }} </div>
+      {% endfor %}	
+
   </div>
 
+  <div class='mb-3'><a href="{% url 'pdblog:comment_create' article_detail.pk %}"> Write comment </a></div>
   {% if request.user == article_detail.user %}
   <div><a href="{% url 'pdblog:article_update' article_detail.pk %}"><button class="btn btn-outline-primary">Edit</button></a>
     <a href="{% url 'pdblog:article_delete' article_detail.pk %}"><button class="btn btn-outline-danger">Delete</button></a></div>
