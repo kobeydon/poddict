@@ -13,9 +13,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
 
-from .models import Article
+from .models import Article, Comment
 from register.models import User
-from .forms import ArticleForm, ContactForm
+from .forms import ArticleForm, CommentForm, ContactForm
 
 class ArticleList(ListView):
     model = Article
@@ -30,7 +30,10 @@ class ArticleList(ListView):
 def article_view(request, article_id, template_name='pdblog/detail.html'):
 
     target_article = get_object_or_404(Article, pk=article_id)
-    data = { 'article_detail' : target_article }
+    valid_comments = target_article.comment_set.filter(is_published='True')
+    data = { 'article_detail' : target_article,
+             'valid_comments' : valid_comments }
+
     return render(request, template_name, data)
 
 #class ArticleLikeToggle(RedirectView):
@@ -89,6 +92,24 @@ class ArticleCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+class CommentCreate(LoginRequiredMixin, CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'pdblog/forms.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = get_object_or_404(Article, pk = self.kwargs['pk'])
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('pdblog:article_view', kwargs = { 'article_id' : self.kwargs['pk'] })
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.target_article = get_object_or_404(Article, pk = self.kwargs['pk']) 
+        return super().form_valid(form)
+
 # @login_required
 # def article_create(request, template_name='pdblog/forms.html'):
 #     form = ArticleForm(request.POST or None)
@@ -98,7 +119,7 @@ class ArticleCreate(LoginRequiredMixin, CreateView):
 #             form.save()
 #             return redirect('pdblog:article_list')
 #         except:
-#             pass
+#             passi
 #     else:
 #         form = ArticleForm()
 #

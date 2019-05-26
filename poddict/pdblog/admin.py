@@ -1,15 +1,15 @@
 from django.contrib import admin
 from .models import Article, AllArticles, Comment, AllComments
 
-def publisharticles(modeladmin, request, queryset):
+def publish(modeladmin, request, queryset):
     queryset.update(is_published=True)
 
-publisharticles.short_description = "Publish articles"
+publish.short_description = "Publish"
 
-def withdrawarticles(modeladmin, request, queryset):
+def withdraw(modeladmin, request, queryset):
     queryset.update(is_published=False)
 
-withdrawarticles.short_description = "Withdraw articles"
+withdraw.short_description = "Withdraw"
 
 class ArticleAdmin(admin.ModelAdmin):
 
@@ -20,10 +20,15 @@ class ArticleAdmin(admin.ModelAdmin):
     #     obj.user = request.user
     #     obj.save()
 
-    list_display = ('title', 'user', 'pub_date', 'is_published')
+    list_display = ('title', 'user', 'pub_date', 'is_published' )
     list_filter = ('is_published', 'pub_date')
     search_fields = ('title', 'pub_date', 'user', 'text')
-    actions = [publisharticles, withdrawarticles]
+    actions = [publish, withdraw]
 
+class CommentAdmin(admin.ModelAdmin):
+    
+    actions = [publish, withdraw]
+    list_display = ('comment_text', 'is_published')
 
 admin.site.register(AllArticles, ArticleAdmin)
+admin.site.register(AllComments, CommentAdmin)

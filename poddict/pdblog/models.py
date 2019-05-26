@@ -26,8 +26,11 @@ class Article(models.Model):
     is_published = models.BooleanField(default=False)
     slug = models.SlugField(default="")
     likes = models.ManyToManyField(User, blank=True, related_name="article_likes")
+<<<<<<< HEAD
 
     #uses custom manager for general view
+=======
+>>>>>>> 5ef72d8d9ac0a372606347f708cea767c3e26fa4
     objects = ArticleManager()
 
     def __str__(self):
@@ -57,11 +60,16 @@ class AllArticles(Article):
 
     objects = models.Manager()
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ef72d8d9ac0a372606347f708cea767c3e26fa4
 class CommentManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(is_published=True)
 
 class Comment(models.Model):
+<<<<<<< HEAD
 
     class Meta:
         verbose_name = 'Commnet'
@@ -74,6 +82,23 @@ class Comment(models.Model):
     is_published = models.BooleanField(default=False)
     pub_date = models.DateTimeField('published date', auto_now=True)
     objects = CommentManager()
+=======
+    class Meta:
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
+        ordering = ['-pub_date']
+        app_label = 'pdblog'
+    
+    target_article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    comment_text = models.TextField(max_length="128")
+    pub_date = models.DateTimeField('date published', auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    is_published = models.BooleanField(default=False)
+
+    def __str__(self):
+        
+        return self.comment_text
+>>>>>>> 5ef72d8d9ac0a372606347f708cea767c3e26fa4
 
 class AllComments(Comment):
     class Meta:
