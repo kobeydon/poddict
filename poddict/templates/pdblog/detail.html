@@ -8,14 +8,16 @@
       <span class="liked_cnt">{{ article_detail.likes.count }}</span>
       like</div>
       <div id="error" class="text-warning"></div>
-      <div class="pubdate">&nbsp;Published:{{ article_detail.pub_date|date:"n.t Y" }}<span>&nbsp; by {{ article_detail.user.last_name }}</span></div>
+      <div class="pubdate">&nbsp;Published:{{ article_detail.pub_date|date:"n.d Y" }}<span>&nbsp; by {{ article_detail.user.last_name }}</span></div>
 
       <hr>
       <p class="text">{{ article_detail.text|linebreaksbr }}</p>
       <hr>
+      <h1 class="comments_h"> Comments </h1>
       {% for c in valid_comments %}
-      <div> {{ c.comment_text }} </div>
-      {% endfor %}	
+      <small> {{ c.comment_text|linebreaksbr}} </small>
+      <hr>
+      {% endfor %}
 
   </div>
   <div> {{ article.comment_set.all }} </div>
