@@ -66,7 +66,7 @@ class Comment(models.Model):
         verbose_name_plural = 'Comments'
         ordering = ['-pub_date']
         app_label = 'pdblog'
-    
+
     target_article = models.ForeignKey(Article, on_delete=models.CASCADE)
     comment_text = models.TextField(max_length="128")
     pub_date = models.DateTimeField('date published', auto_now=True)
@@ -74,7 +74,7 @@ class Comment(models.Model):
     is_published = models.BooleanField(default=False)
 
     def __str__(self):
-        
+
         return self.comment_text
 
 class AllComments(Comment):

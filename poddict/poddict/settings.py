@@ -150,3 +150,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_HOST_USER = 'pacemaking313@gmail.com'
 # EMAIL_HOST_PASSWORD = 'rabish290'
 # EMAIL_USE_TLS = True
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'storage')
+MEDIA_URL = '/storage/'

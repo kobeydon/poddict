@@ -2,3 +2,4 @@ djangorestframework-jwt
 Djangorestframework
 django-bootstrap4
 django==2.1.2
+Pillow

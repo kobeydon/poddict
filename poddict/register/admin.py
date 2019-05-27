@@ -21,7 +21,7 @@ if settings.AUTH_USER_MODEL == 'register.User':
     class MyUserAdmin(UserAdmin):
         fieldsets = (
             (None, {'fields':('email', 'password')}),
-            (_('User Info'), {'fields':('user_name',)}),
+            (_('User Info'), {'fields':('user_name','user_icon')}),
             (_('Personal info'), {'fields':('first_name','last_name')}),
             (_('Permissions'),{'fields':('is_active','is_staff','is_superuser',
                                 'groups','user_permissions')}),

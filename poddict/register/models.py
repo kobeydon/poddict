@@ -6,8 +6,13 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.contrib.auth.base_user import BaseUserManager
 from poddict import settings
+from poddict.settings import MEDIA_ROOT
 # Create your models here.
 if settings.AUTH_USER_MODEL == 'register.User':
+
+    def user_directory_path(instance, filename):
+    #files to be uploaded to storagr/user_<id>/<filename>
+        return 'user_[0]/{1}'.format(instance.user.id, filename)
 
     class UserManager(BaseUserManager):
         #User Manageer
@@ -47,8 +52,12 @@ if settings.AUTH_USER_MODEL == 'register.User':
 
         email = models.EmailField(_('email address'),unique=True)
         user_name=models.CharField(_('username'),max_length=30, unique=True)
-        first_name = models.CharField(_('first name'),max_length=30)
-        last_name = models.CharField(_('last name'),max_length=150)
+        first_name = models.CharField(_('first name'),max_length=30, blank=True)
+        last_name = models.CharField(_('last name'),max_length=30, blank=True)
+        icon_height=models.PositiveIntegerField(null=True)
+        icon_width=models.PositiveIntegerField(null=True)
+        user_icon = models.ImageField(height_field='icon_height', width_field='icon_width', upload_to=user_directory_path, blank=True, default='user_icon/poddict_icon.png')
+
 
         is_staff = models.BooleanField(
             _('staff status'),
