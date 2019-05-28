@@ -1,3 +1,4 @@
+import os
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -7,13 +8,14 @@ from django.contrib.auth.views import (
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.signing import BadSignature, SignatureExpired, loads, dumps
 from django.http import HttpResponseBadRequest
-from django.shortcuts import redirect, resolve_url
+from django.shortcuts import redirect, resolve_url, get_object_or_404
 from django.template.loader import get_template
 from django.views import generic
 from .forms import (
     LoginForm, UserCreateForm, UserUpdateForm
 )
-
+from poddict.settings import MEDIA_ROOT
+from django.core.files.storage import default_storage
 
 User = get_user_model()
 
@@ -115,3 +117,16 @@ class UserUpdate(OnlyYouMixin, generic.UpdateView):
     def get_success_url(self):
         return resolve_url('register:user_detail', pk=self.kwargs['pk'])
 
+    """delete previous icon if uploaded"""
+
+    def form_valid(self, form):
+        if self.request.FILES.get('user_icon'):
+            print(self.request.FILES.get('user_icon'))
+            user = get_object_or_404(User, pk=self.kwargs['pk'])
+            if default_storage.exists(user.user_icon):
+                default_storage.delete(user.user_icon)
+                return super().form_valid(form)
+            else:
+                return super().form_valid(form)
+        else:
+            return super().form_valid(form)
