@@ -4,11 +4,11 @@
     <tbody>
       <tr>
         <th>User Icon</th>
-        <td><img src= "{{ request.user.user_icon.url }}" alt="{{ request.user.user_name }}'s icon'"></td>
+        <td><img src= "{{ request.user.user_icon_thumbnail.url }}" alt="{{ request.user.user_name }}'s icon"></td>
       </tr>
       <tr>
         <th>User Name</th>
-        <td>{{ user.username }}</td>
+        <td>{{ user.user_name }}</td>
       </tr>
       {% if user.username != user.email %}
       <tr>

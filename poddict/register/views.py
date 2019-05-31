@@ -120,13 +120,9 @@ class UserUpdate(OnlyYouMixin, generic.UpdateView):
     """delete previous icon if uploaded"""
 
     def form_valid(self, form):
-        if self.request.FILES.get('user_icon'):
-            print(self.request.FILES.get('user_icon'))
+        if self.request.FILES.get('user_icon_thumbnail'):
             user = get_object_or_404(User, pk=self.kwargs['pk'])
-            if default_storage.exists(user.user_icon):
-                default_storage.delete(user.user_icon)
-                return super().form_valid(form)
-            else:
-                return super().form_valid(form)
+            user.user_icon_thumbnail.delete(False)
+            return super().form_valid(form)
         else:
             return super().form_valid(form)

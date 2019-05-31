@@ -7,6 +7,8 @@ from django.utils import timezone
 from django.contrib.auth.base_user import BaseUserManager
 from poddict import settings
 from poddict.settings import MEDIA_ROOT
+from imagekit.models import ImageSpecField, ProcessedImageField
+from imagekit.processors import ResizeToFill, SmartResize
 # Create your models here.
 if settings.AUTH_USER_MODEL == 'register.User':
 
@@ -47,6 +49,7 @@ if settings.AUTH_USER_MODEL == 'register.User':
 
             return self._create_user(email, password, **extra_fields)
 
+
     class User(AbstractBaseUser, PermissionsMixin):
         """Custom User Model."""
 
@@ -54,9 +57,14 @@ if settings.AUTH_USER_MODEL == 'register.User':
         user_name=models.CharField(_('username'),max_length=30, unique=True)
         first_name = models.CharField(_('first name'),max_length=30, blank=True)
         last_name = models.CharField(_('last name'),max_length=30, blank=True)
-        icon_height=models.PositiveIntegerField(null=True)
-        icon_width=models.PositiveIntegerField(null=True)
-        user_icon = models.ImageField(height_field='icon_height', width_field='icon_width', upload_to='user_icon', default='user_icon/poddict_icon.png')
+        # icon_height=models.PositiveIntegerField(null=True)
+        # icon_width=models.PositiveIntegerField(null=True)
+        user_icon_thumbnail = ProcessedImageField(upload_to='user_icon',
+                                        processors=[SmartResize(100,100, False)],
+                                        format='JPEG',
+                                        options={'quality':60},
+                                        default='user_icon/poddict_icon.jpg',
+                                        blank=True)
 
 
         is_staff = models.BooleanField(

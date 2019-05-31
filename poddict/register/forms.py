@@ -26,7 +26,7 @@ class UserCreateForm(UserCreationForm):
     class Meta:
         model = User
         if User.USERNAME_FIELD == 'email':
-            fields = ('email', 'user_name',)
+            fields = ('email', 'user_name', 'user_icon_thumbnail',)
         else:
             fields = ('username', 'email')
 
@@ -41,7 +41,7 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         if User.USERNAME_FIELD == 'email':
-            fields = ('email', 'user_name', 'user_icon', 'first_name', 'last_name')
+            fields = ('email', 'user_name', 'user_icon_thumbnail', 'first_name', 'last_name')
         else:
             fields = ('username', 'email', 'first_name', 'last_name')
 

@@ -7,7 +7,7 @@
   <table class="table">
     {% for article in object_list %}
     <tr>
-      <td><img src="{{ article.user.user_icon.url }}" alt="user icon" height="42" max-width="120"></td>
+      <td><img src="{{ article.user.user_icon_thumbnail.url }}" alt = "{{ article.user.user_name}}'s icon" width=60 height=60></td>
       <td class="td_pdtitle"><a href="{% url 'pdblog:article_view' article.pk %}">{{ article.title }}</a></td>
       <td>{{ article.pub_date|date:"M d Y" }}</td>
       <td>{{ article.user.user_name }}</td>
