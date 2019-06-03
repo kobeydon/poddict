@@ -64,7 +64,8 @@ if settings.AUTH_USER_MODEL == 'register.User':
                                         format='JPEG',
                                         options={'quality':60},
                                         default='user_icon/poddict_icon.jpg',
-                                        blank=True)
+                                        null=False
+                                        )
 
 
         is_staff = models.BooleanField(

@@ -6,12 +6,12 @@
 {% endif %}
   <table class="table">
     {% for article in object_list %}
-    <tr>
-      <td><img src="{{ article.user.user_icon_thumbnail.url }}" alt = "{{ article.user.user_name}}'s icon" width=60 height=60></td>
+      <tr>
+      <td><a href="{% url 'pdblog:article_view' article.pk %}"><img src="{{ article.user.user_icon_thumbnail.url }}" alt = "{{ article.user.user_name}}'s icon" width=60 height=60></a></td>
       <td class="td_pdtitle"><a href="{% url 'pdblog:article_view' article.pk %}">{{ article.title }}</a></td>
-      <td>{{ article.pub_date|date:"M d Y" }}</td>
+      <td class="pubdate">{{ article.pub_date|date:"M d Y" }}</td>
       <td>{{ article.user.user_name }}</td>
-  </tr>
+      </tr>
     {% endfor %}
   </table>
 

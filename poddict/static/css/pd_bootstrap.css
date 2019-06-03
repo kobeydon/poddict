@@ -7651,7 +7651,7 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
-.post > .pubdate {
+.pubdate {
   color: gray; }
 
 .post > .text {
@@ -7662,7 +7662,13 @@ a.text-dark:hover, a.text-dark:focus {
   font-size: 24px; }
 
 .td_pdtitle {
-  max-width: 155px; }
+  max-width: 155px;
+  font-size: 3vw; }
+
+@media (max-width: 576px) {
+  .td_pdtitle {
+    max-width: 155px;
+    font-size: 4vw; } }
 
 /* Coded with love by Mutiullah Samim */
 html {
@@ -7671,7 +7677,8 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px; }
+  margin-bottom: 60px;
+  font-family: Lato, 'Droid Serif', Montserrat, Arial, Courier, "Times New Roman", Times, serif; }
 
 .pd_card {
   height: 400px;
@@ -7768,3 +7775,7 @@ body {
   color: gray;
   font-size: 24px;
   font-style: italic; }
+
+td a {
+  display: block;
+  color: black; }
