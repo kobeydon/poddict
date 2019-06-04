@@ -11,7 +11,7 @@
       <div class="pubdate">&nbsp;Published:{{ article_detail.pub_date|date:"n.d Y" }}<span>&nbsp; by {{ article_detail.user.last_name }}</span></div>
 
       <hr>
-      <p class="text">{{ article_detail.text|linebreaksbr }}</p>
+      {{ article_detail.text|linebreaks }}
       <hr>
       <h1 class="comments_h"> Comments </h1>
       {% for c in valid_comments %}

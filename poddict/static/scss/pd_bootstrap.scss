@@ -43,33 +43,39 @@
 
 .pubdate {
   color: gray;
+  font-size:0.7rem;
 }
-.post > .text {
+.post > p {
   padding-top: 15px;
+  width: 768px; /* change to your preferences */
+  word-wrap: break-word;
 }
+
 .pdtitle {
   font-style:italic;
   font-size: 24px;
 }
 .td_pdtitle {
-  max-width: 155px;
-  font-size:3vw;
+  max-width: 24rem;
+  font-size:1rem;
 }
 
-@media (max-width: 576px) {
-  .td_pdtitle {
-    max-width: 155px;
-    font-size:4vw;
-  }
-}
+// @media (max-width: 576px) {
+//   .td_pdtitle {
+//     max-width: 24rem;
+//     font-size:0.8rem;
+//   }
+// }
 /* Coded with love by Mutiullah Samim */
 html {
   position: relative;
   min-height: 100%;
+  width:100%;
 }
 
 body {
   /* Margin bottom by footer height */
+  width:100%;
   margin-bottom: 60px;
   font-family: Lato, 'Droid Serif', Montserrat, Arial, Courier, "Times New Roman", Times, serif;
 }
@@ -131,12 +137,10 @@ body {
 .pdfooter {
   position: absolute;
   bottom: 0;
-  width: 99%;
   /* Set the fixed height of the footer here */
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
   color: white;
-  background-color: teal;
 }
 
 .pdfooter > .container {
@@ -175,5 +179,12 @@ td a {
    display: block;
    color: black;
 }
+.table td {
+    padding: 0.4rem;
+    vertical-align:middle;
+    border-top: 1px solid #117a8b;
+}
+.list-unstyled > li {
+  padding:0.25rem;
 
-
+}

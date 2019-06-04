@@ -4,15 +4,64 @@
 {% if user.is_authenticated %}
 <div> <a class="btn btn-outline-info mb-3" href="{% url 'pdblog:article_create' %}">create blog</a></div>
 {% endif %}
+<div class="row">
+<nav class="col-md-2 d-inline d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+          <span ><i class="fas fa-arrow-circle-right"></i></span>
+          Topics <span class="sr-only">(current)</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span ><i class="fas fa-laptop"></i></span>
+          Technology
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span ><i class="fas fa-headphones-alt"></i></span>
+          Podcast
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span ><i class="fas fa-glass-whiskey"></i></span>
+          Drunk
+        </a>
+      </li>
+    </ul>
+
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item">
+          <span ><i class="fas fa-book"></i></span>
+          Info <span class="sr-only">(current)</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span ><i class="fas fa-paper-plane"></i></span>
+        Contact
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span ><i class="fas fa-user"></i></span>
+        about
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="col-md-10">
   <table class="table">
     {% for article in object_list %}
       <tr>
       <td><a href="{% url 'pdblog:article_view' article.pk %}"><img src="{{ article.user.user_icon_thumbnail.url }}" alt = "{{ article.user.user_name}}'s icon" width=60 height=60></a></td>
-      <td class="td_pdtitle"><a href="{% url 'pdblog:article_view' article.pk %}">{{ article.title }}</a></td>
-      <td class="pubdate">{{ article.pub_date|date:"M d Y" }}</td>
-      <td>{{ article.user.user_name }}</td>
+      <td class="td_pdtitle"><a href="{% url 'pdblog:article_view' article.pk %}">{{ article.title|truncatechars:24}}</a></td>
+      <td class="pubdate">{{ article.pub_date|date:"M d Y" }} by {{ article.user.user_name }}</td>
       </tr>
     {% endfor %}
   </table>
-
+</div>
+</div>
 {% endblock contents %}
