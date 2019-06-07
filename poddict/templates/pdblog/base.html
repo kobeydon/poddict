@@ -1,3 +1,78 @@
-{% extends "base.html" %}
+{% load staticfiles %}
 
-{% block nav_activate %}active{% endblock %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="poddict website">
+    <meta name="author" content="kobeydon">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>poddict</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/pd_bootstrap.css' %}" rel="stylesheet">
+    <!-- fontawesome 5 CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <style>
+        .on { background: #F75D5D; color: #fff; }
+    </style>
+     <!-- Jquery needs to be here for ajax to work  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+  <body>
+
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md fixed-top bg-outline-teal" style=width:99%;margin-top:1px;>
+        <a class="navbar-brand" href="{% url 'pdblog:article_list' %}">PODDICT</a>
+        <small class = "navbar-subtitle", style="Color:teal">podcast and tech addicts</small>
+        <button class="navbar-toggler navbar-teal-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% block nav_activate %}{% endblock %}">
+              <a class="nav-link" href="{% url 'pdblog:article_list' %}">TOP<span class="sr-only">(current)</span></a></li>
+
+            {% if user.is_authenticated %}
+
+            <li><a class="nav-item nav-link" href="{% url 'register:user_detail' user.pk %}">Profile</a></li>
+            <li><a class="nav-item nav-link" href="{% url 'register:user_update' user.pk %}">Update</a></li>
+            <li><a class="nav-item nav-link" href="{% url 'register:logout' %}">Logout</a></li>
+            <li class="navbar-text">Signed in:{{ user.user_name }}</li>
+
+            {% else %}
+            <li><a class="nav-item nav-link" href="{% url 'register:login' %}">Login</a></li>
+            <li><a class="nav-item nav-link" href="{% url 'register:user_create' %}">SignUp</a></li>
+            {% endif %}
+          </ul>
+
+        </div>
+      </nav>
+    </header>
+
+
+    <!-- Begin page content -->
+    <main role="main" class="container mt-7">
+        {% block sidebar %}{% endblock %}
+        {% block contents %}{% endblock %}
+    </main>
+
+    <div class="pdfooter bg-outline-teal" style="width:99%;">
+      <div class="container">
+        <span> &#169; All rights reserved by kobeydon</span>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+ </body>
+</html>
