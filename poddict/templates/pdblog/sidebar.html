@@ -1,0 +1,53 @@
+{% extends "./base.html" %}
+
+{% block sidebar %}
+
+<div class="row">
+<nav class="col-md-2 d-inline d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+          <span ><i class="fas fa-arrow-circle-right"></i></span>
+          Topics <span class="sr-only">(current)</span>
+      </li>
+      <li class="nav-item d-inline d-md-block">
+        <a class="nav-link" href="#">
+          <span ><i class="fas fa-laptop"></i></span>
+          Technology
+        </a>
+      </li>
+      <li class="nav-item d-inline d-md-block">
+        <a class="nav-link" href="#">
+          <span ><i class="fas fa-headphones-alt"></i></span>
+          Podcast
+        </a>
+      </li>
+      <li class="nav-item d-inline d-md-block">
+        <a class="nav-link" href="#">
+          <span ><i class="fas fa-glass-whiskey"></i></span>
+          Drunk
+        </a>
+      </li>
+    </ul>
+
+    <ul class="nav flex-column mb-2 d-inline d-md-block">
+      <li class="nav-item d-inline d-md-block">
+          <span ><i class="fas fa-book"></i></span>
+          Info <span class="sr-only">(current)</span>
+      </li>
+      <li class="nav-item d-inline d-md-block">
+        <a class="nav-link" href="#">
+          <span ><i class="fas fa-paper-plane"></i></span>
+        Contact
+        </a>
+      </li>
+      <li class="nav-item d-inline d-md-block">
+        <a class="nav-link" href="#">
+          <span ><i class="fas fa-user"></i></span>
+        about
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}

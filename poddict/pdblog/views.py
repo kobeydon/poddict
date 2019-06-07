@@ -107,7 +107,7 @@ class CommentCreate(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        form.instance.target_article = get_object_or_404(Article, pk = self.kwargs['pk']) 
+        form.instance.target_article = get_object_or_404(Article, pk = self.kwargs['pk'])
         return super().form_valid(form)
 
 # @login_required
