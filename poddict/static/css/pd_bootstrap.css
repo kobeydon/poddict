@@ -9112,6 +9112,10 @@ h3 {
   font-size: 1rem;
 }
 
+.td_pdtitle > a {
+  word-wrap: break-word;
+}
+
 /* Coded with love by Mutiullah Samim */
 html {
   position: relative;

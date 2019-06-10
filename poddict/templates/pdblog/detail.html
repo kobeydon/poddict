@@ -11,10 +11,11 @@
       <div class="pubdate">&nbsp;Published:{{ article_detail.pub_date|date:"n.d Y" }}<span>&nbsp; by {{ article_detail.user.last_name }}</span></div>
 
       <hr>
-      {{ article_detail.text|linebreaks }}
+      {{ article_detail.formatted_markdown|safe }}
       <hr>
       <h1 class="comments_h"> Comments </h1>
       {% for c in valid_comments %}
+      <small> Posted by {{ c.user_name }}</small>
       <small> {{ c.comment_text|linebreaksbr}} </small>
       <hr>
       {% endfor %}

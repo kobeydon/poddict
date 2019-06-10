@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Article, AllArticles, Comment, AllComments
+from markdownx.admin import MarkdownxModelAdmin
+
 
 def publish(modeladmin, request, queryset):
     queryset.update(is_published=True)
@@ -11,22 +13,17 @@ def withdraw(modeladmin, request, queryset):
 
 withdraw.short_description = "Withdraw"
 
-class ArticleAdmin(admin.ModelAdmin):
+class ArticleAdmin(MarkdownxModelAdmin):
 
     fields = ('title', 'text', 'is_published', 'user', 'likes')
     readonly_fields = ('user',)
-
-    # def save_model(self, request, obj, form, change):
-    #     obj.user = request.user
-    #     obj.save()
-
     list_display = ('title', 'user', 'pub_date', 'is_published' )
     list_filter = ('is_published', 'pub_date')
     search_fields = ('title', 'pub_date', 'user', 'text')
     actions = [publish, withdraw]
 
 class CommentAdmin(admin.ModelAdmin):
-    
+
     actions = [publish, withdraw]
     list_display = ('comment_text', 'is_published')
 

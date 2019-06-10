@@ -3,4 +3,5 @@ Djangorestframework
 django-bootstrap4
 django==2.1.8
 django-imagekit
+django-markdownx
 Pillow

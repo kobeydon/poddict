@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from datetime import datetime
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'markdownx',
     'imagekit',
     'register',
     'bootstrap4',
@@ -126,6 +129,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+STATIC_ROOT = os.path.join(BASE_DIR, 'servstatic')
 
 REST_FRAMEWORK = {
         'DEFAULT_PERMISSION_CLASSES': (
@@ -154,3 +158,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'storage')
 MEDIA_URL = '/storage/'
+
+MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')
+MARKDOWNX_UPLOAD_MAX_SIZE = 5 * 1024 * 1024 #5MB in bytes

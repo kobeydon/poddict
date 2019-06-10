@@ -41,6 +41,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', include('pdblog.urls')),
     path('register/', include('register.urls')),
+    path('markdownx/', include('markdownx.urls')),
 ]
 
 if settings.DEBUG:

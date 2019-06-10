@@ -1,0 +1,200 @@
+/*!
+ * Bootstrap v4.1.3 (https://getbootstrap.com/)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+@import "functions";
+@import "variables";
+@import "mixins";
+@import "root";
+@import "reboot";
+@import "type";
+@import "images";
+@import "code";
+@import "grid";
+@import "tables";
+@import "forms";
+@import "buttons";
+@import "transitions";
+@import "dropdown";
+@import "button-group";
+@import "input-group";
+@import "custom-forms";
+@import "nav";
+@import "navbar";
+@import "card";
+@import "breadcrumb";
+@import "pagination";
+@import "badge";
+@import "jumbotron";
+@import "alert";
+@import "progress";
+@import "media";
+@import "list-group";
+@import "close";
+@import "modal";
+@import "tooltip";
+@import "popover";
+@import "carousel";
+@import "utilities";
+@import "print";
+
+.pubdate {
+  color: gray;
+  font-size:0.7rem;
+}
+.post > p {
+  padding-top: 15px;
+  width: 768px; /* change to your preferences */
+  word-wrap: break-word;
+}
+
+.pdtitle {
+  font-style:italic;
+  font-size: 24px;
+}
+.td_pdtitle {
+  max-width: 24rem;
+  font-size:1rem;
+}
+
+// @media (max-width: 576px) {
+//   .td_pdtitle {
+//     max-width: 24rem;
+//     font-size:0.8rem;
+//   }
+// }
+/* Coded with love by Mutiullah Samim */
+html {
+  position: relative;
+  min-height: 100%;
+  width:100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  width:100%;
+  margin-bottom: 60px;
+  font-family: Lato, 'Droid Serif', Montserrat, Arial, Courier, "Times New Roman", Times, serif;
+}
+.pd_card {
+  height: 400px;
+  width: 380px;
+  margin-top: 30px;
+  margin-bottom: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+
+}
+
+.brand_logo {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+.login_btn {
+  width: 100%;
+}
+
+.login_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.login_container {
+  padding: 0 2rem;
+}
+.input-group-text {
+  border: 0 !important;
+  border-radius: 0.25rem 0 0 0.25rem !important;
+}
+
+.input_user,
+.input_pass:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+  background-color: #c0392b !important;
+}
+
+.regist-text {
+  text-align:center;
+  font-size:14px;
+  color:gray;
+  padding-top:15px;
+}
+
+.pdfooter {
+  position: absolute;
+  bottom: 0;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  color: white;
+}
+
+.pdfooter > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.bg-outline-teal {
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: teal;
+  color:teal;
+}
+
+.nav-link,
+.nav-text,
+.navbar-brand {
+  color:teal;
+}
+
+.navbar-teal-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 128, 128, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+.navbar-teal-toggler.navbar-toggler {
+    border-color: rgba(0, 128, 128, 0.5);
+  }
+
+.comments_h {
+  color:gray;
+  font-size:24px;
+  font-style:italic;
+}
+
+td a {
+   display: block;
+   color: black;
+}
+.table td {
+    padding: 0.4rem;
+    vertical-align:middle;
+    border-top: 1px solid #117a8b;
+}
+.list-unstyled > li {
+  padding:0.25rem;
+
+}
+
+.res-font-size {
+  font-size:1rem;
+}
+@media (max-width: 576px) {
+  .res-font-size {
+    font-size: 0.9rem;
+  }
+}
+

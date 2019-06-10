@@ -5,6 +5,9 @@ from django.core.mail import send_mail
 from django.urls import reverse
 from register.models import User
 from django.template.defaultfilters import slugify
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdownify
+
 # Create your models here.
 
 
@@ -19,8 +22,8 @@ class Article(models.Model):
         ordering = ['-pub_date']
         app_label = 'pdblog'
 
-    title = models.CharField(max_length=128)
-    text = models.TextField(default="")
+    title = models.CharField(max_length=64)
+    text = MarkdownxField(max_length=3000)
     pub_date = models.DateTimeField('date published', auto_now=True)
     user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
     is_published = models.BooleanField(default=False)
@@ -39,6 +42,9 @@ class Article(models.Model):
 
     def get_api_like_url(self):
         return reverse("pdblog:like_api_toggle", kwargs={'pk':self.pk})
+
+    def formatted_markdown(self):
+        return markdownify(self.text)
 
     @property
     def total_fav(self):
@@ -68,7 +74,7 @@ class Comment(models.Model):
         app_label = 'pdblog'
 
     target_article = models.ForeignKey(Article, on_delete=models.CASCADE)
-    comment_text = models.TextField(max_length="128")
+    comment_text = models.TextField(max_length="512")
     pub_date = models.DateTimeField('date published', auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_published = models.BooleanField(default=False)
