@@ -188,3 +188,13 @@ td a {
   padding:0.25rem;
 
 }
+
+.res-font-size {
+  font-size:1rem;
+}
+@media (max-width: 576px) {
+  .res-font-size {
+    font-size: 0.9rem;
+  }
+}
+

@@ -30,7 +30,7 @@
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md fixed-top bg-outline-teal" style=width:99%;margin-top:1px;>
         <a class="navbar-brand" href="{% url 'pdblog:article_list' %}">PODDICT</a>
-        <small class = "navbar-subtitle", style="Color:teal">podcast and tech addicts</small>
+        <small class ="d-none d-sm-block", style="Color:teal">podcast and tech addicts</small>
         <button class="navbar-toggler navbar-teal-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,6 +45,8 @@
             <li><a class="nav-item nav-link" href="{% url 'register:user_update' user.pk %}">Update</a></li>
             <li><a class="nav-item nav-link" href="{% url 'register:logout' %}">Logout</a></li>
             <li class="navbar-text">Signed in:{{ user.user_name }}</li>
+            <li><a class="nav-item nav-link ml-2 btn btn-outline-info" href="{% url 'pdblog:article_create' %}">create blog</a></li>
+
 
             {% else %}
             <li><a class="nav-item nav-link" href="{% url 'register:login' %}">Login</a></li>
