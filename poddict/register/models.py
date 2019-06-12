@@ -60,7 +60,7 @@ if settings.AUTH_USER_MODEL == 'register.User':
         # icon_height=models.PositiveIntegerField(null=True)
         # icon_width=models.PositiveIntegerField(null=True)
         user_icon_thumbnail = ProcessedImageField(upload_to='user_icon',
-                                        processors=[SmartResize(100,100, False)],
+                                        processors=[ResizeToFill(100,100, False)],
                                         format='JPEG',
                                         options={'quality':60},
                                         default='user_icon/poddict_icon.jpg',

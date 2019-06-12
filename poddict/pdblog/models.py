@@ -43,8 +43,6 @@ class Article(models.Model):
     def get_api_like_url(self):
         return reverse("pdblog:like_api_toggle", kwargs={'pk':self.pk})
 
-    def formatted_markdown(self):
-        return markdownify(self.text)
 
     @property
     def total_fav(self):

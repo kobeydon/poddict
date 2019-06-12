@@ -9108,12 +9108,20 @@ h3 {
 }
 
 .td_pdtitle {
-  max-width: 24rem;
+  max-width: 15rem;
   font-size: 1rem;
 }
 
 .td_pdtitle > a {
   word-wrap: break-word;
+}
+
+.td_icon {
+  max-width: 3rem;
+}
+
+.td_icon > a > img {
+  border-radius: 9%;
 }
 
 /* Coded with love by Mutiullah Samim */
