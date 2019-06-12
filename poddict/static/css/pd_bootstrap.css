@@ -9117,9 +9117,14 @@ h3 {
 }
 
 .td_icon {
-  max-width: 3rem;
+  max-width: 4rem;
 }
 
+@media (max-width: 991.8px) {
+  .td_icon {
+    margin-right: 5px;
+  }
+}
 .td_icon > a > img {
   border-radius: 9%;
 }
