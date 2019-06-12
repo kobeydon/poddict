@@ -9,7 +9,7 @@
       <span class="liked_cnt">{{ article_detail.likes.count }}</span>
       like</div>
       <div id="error" class="text-warning"></div>
-      <div class="pubdate">&nbsp;Published:{{ article_detail.pub_date|date:"n.d Y" }}<span>&nbsp; by {{ article_detail.user.last_name }}</span></div>
+      <div class="pubdate">&nbsp;Tag:{{ article_detail.tag}} Published:{{ article_detail.pub_date|date:"n.d Y" }}<span>&nbsp; by {{ article_detail.user.last_name }}</span></div>
 
       <hr>
       {{ article_detail.text | markdown_to_html_with_escape }}

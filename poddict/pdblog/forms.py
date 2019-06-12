@@ -12,7 +12,8 @@ class CommentForm(forms.ModelForm):
         fields = [ 'comment_text']
 
 class ContactForm(forms.Form):
+
     subject = forms.CharField(max_length=100)
     message = forms.CharField(widget=forms.Textarea)
-    sender = forms.EmailField()
+    sender = forms.EmailField(required=False)
     cc_myself = forms.BooleanField(required=False)

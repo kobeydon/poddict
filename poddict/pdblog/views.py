@@ -27,6 +27,21 @@ class ArticleList(ListView):
 #     data = { 'objects_list' : article }
 #     return render(request, template_name, data)
 
+class TechList(ListView):
+    model = Article
+    template_name = 'pdblog/list.html'
+    queryset = Article.objects.filter(tag='TC')
+
+class PodList(ListView):
+    model = Article
+    template_name = 'pdblog/list.html'
+    queryset = Article.objects.filter(tag='PD')
+
+class NoteList(ListView):
+    model = Article
+    template_name = 'pdblog/list.html'
+    queryset = Article.objects.filter(tag='NT')
+
 def article_view(request, article_id, template_name='pdblog/detail.html'):
 
     target_article = get_object_or_404(Article, pk=article_id)
@@ -47,6 +62,9 @@ def article_view(request, article_id, template_name='pdblog/detail.html'):
 #            else:
 #                obj.likes.add(user)
 #        return url_
+
+
+
 
 
 class ArticleLikeApiToggle(APIView):
@@ -179,10 +197,13 @@ def contactformsend(request):
         if cc_myself:
             recipients.append(sender)
 
+        if not form.cleaned_data['sender']:
+            sender = request.user.username
+
         send_mail(subject, message, sender, recipients)
         return HttpResponseRedirect('/index/')
     else:
-        form = ContactForm()
+        form = ContactForm(initial={'sender':request.user.username})
     return render(request, 'pdblog/contactform.html', {'form': form})
 
 

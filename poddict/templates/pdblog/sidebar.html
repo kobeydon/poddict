@@ -11,21 +11,21 @@
           Topics <span class="sr-only">(current)</span>
       </li>
       <li class="nav-item res-font-size">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'pdblog:tech_list' %}">
           <span ><i class="fas fa-laptop"></i></span>
           Tech
         </a>
       </li>
       <li class="nav-item res-font-size">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'pdblog:pod_list' %}">
           <span ><i class="fas fa-headphones-alt"></i></span>
           Podcast
         </a>
       </li>
       <li class="nav-item res-font-size">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'pdblog:note_list' %}">
           <span ><i class="fas fa-glass-whiskey"></i></span>
-          Drunk
+          Notes
         </a>
       </li>
       <li class="nav-item d-none d-md-block">
@@ -33,7 +33,7 @@
           Info <span class="sr-only">(current)</span>
       </li>
       <li class="nav-item res-font-size">
-        <a class="nav-link d-block" href="#">
+        <a class="nav-link d-block" href="{% url 'pdblog:mail_send' %}">
           <span ><i class="fas fa-paper-plane"></i></span>
         Contact
         </a>

@@ -15,7 +15,18 @@ class ArticleManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(is_published=True)
 
+
 class Article(models.Model):
+    tech = 'TC'
+    poddcast = 'PD'
+    notes = 'NT'
+
+    TAG_CHOICES = [
+        (tech, 'Tech'),
+        (poddcast, 'Poddcast'),
+        (notes, 'Notes'),
+    ]
+
     class Meta:
         verbose_name = 'Article'
         verbose_name_plural = 'Articles'
@@ -30,7 +41,12 @@ class Article(models.Model):
     slug = models.SlugField(default="")
     likes = models.ManyToManyField(User, blank=True, related_name="article_likes")
     objects = ArticleManager()
-
+    tag = models.CharField(
+            max_length=2,
+            choices=TAG_CHOICES,
+            default=tech,
+            blank=False,
+        )
     def __str__(self):
         return self.title
 
@@ -56,6 +72,8 @@ class Article(models.Model):
 class AllArticles(Article):
     class Meta:
         proxy = True
+        verbose_name = 'Article'
+
 
     objects = models.Manager()
 
@@ -84,5 +102,7 @@ class Comment(models.Model):
 class AllComments(Comment):
     class Meta:
         proxy = True
+        verbose_name = 'Comment'
+
 
     objects = models.Manager()

@@ -15,7 +15,7 @@ withdraw.short_description = "Withdraw"
 
 class ArticleAdmin(MarkdownxModelAdmin):
 
-    fields = ('title', 'text', 'is_published', 'user', 'likes')
+    fields = ('title', 'text', 'tag', 'is_published', 'user', 'likes')
     readonly_fields = ('user',)
     list_display = ('title', 'user', 'pub_date', 'is_published' )
     list_filter = ('is_published', 'pub_date')

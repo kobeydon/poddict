@@ -15,7 +15,6 @@ from .forms import (
     LoginForm, UserCreateForm, UserUpdateForm
 )
 from poddict.settings import MEDIA_ROOT
-from django.core.files.storage import default_storage
 
 User = get_user_model()
 
