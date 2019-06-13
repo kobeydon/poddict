@@ -9093,6 +9093,7 @@ h3 {
 .pubdate {
   color: gray;
   font-size: 0.7rem;
+  margin-top: 6px;
 }
 
 .post > p {
@@ -9120,11 +9121,22 @@ h3 {
   max-width: 4rem;
 }
 
+.loggedin-text {
+  font-size: 12px;
+  color: #4682B4;
+  margin-left: 10px;
+}
+
 @media (max-width: 991.8px) {
   .td_icon {
     margin-right: 5px;
   }
 }
+.nav-item > img {
+  margin-left: 3px;
+  border-radius: 9%;
+}
+
 .td_icon > a > img {
   border-radius: 9%;
 }
@@ -9250,6 +9262,12 @@ td a {
 }
 
 .table td {
+  padding: 0.4rem;
+  vertical-align: middle;
+  border-top: 1px solid #117a8b;
+}
+
+.table th {
   padding: 0.4rem;
   vertical-align: middle;
   border-top: 1px solid #117a8b;

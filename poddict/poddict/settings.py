@@ -161,3 +161,6 @@ MEDIA_URL = '/storage/'
 
 MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')
 MARKDOWNX_UPLOAD_MAX_SIZE = 5 * 1024 * 1024 #5MB in bytes
+
+SESSION_COOKIE_AGE = 10 * 60 * 60 #10hours in seconds
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

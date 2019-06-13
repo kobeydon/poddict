@@ -20,6 +20,8 @@ from .forms import ArticleForm, CommentForm, ContactForm
 class ArticleList(ListView):
     model = Article
     template_name = 'pdblog/list.html'
+    queryset = Article.objects.order_by('-pub_date')[:10]
+    # paginate_by = 10
 
 # funstion view as reference
 # def article_list(request, template_name='pdblog/list.html'):
@@ -30,17 +32,18 @@ class ArticleList(ListView):
 class TechList(ListView):
     model = Article
     template_name = 'pdblog/list.html'
-    queryset = Article.objects.filter(tag='TC')
+    queryset = Article.objects.filter(tag='TC').order_by('-pub_date')[:10]
+
 
 class PodList(ListView):
     model = Article
     template_name = 'pdblog/list.html'
-    queryset = Article.objects.filter(tag='PD')
+    queryset = Article.objects.filter(tag='PD').order_by('-pub_date')[:10]
 
 class NoteList(ListView):
     model = Article
     template_name = 'pdblog/list.html'
-    queryset = Article.objects.filter(tag='NT')
+    queryset = Article.objects.filter(tag='NT').order_by('-pub_date')[:10]
 
 def article_view(request, article_id, template_name='pdblog/detail.html'):
 

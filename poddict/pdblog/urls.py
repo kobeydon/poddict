@@ -1,5 +1,6 @@
 from django.urls import path, include
 from pdblog import views
+from django.views.generic import TemplateView
 
 app_name = 'pdblog'
 urlpatterns = [
@@ -15,4 +16,6 @@ urlpatterns = [
         path('tech/', views.TechList.as_view(), name='tech_list'),
         path('poddcast/', views.PodList.as_view(), name='pod_list'),
         path('Notes/', views.NoteList.as_view(), name='note_list'),
+        path('about/', TemplateView.as_view(template_name="pdblog/aboutme.html")),
+
         ]

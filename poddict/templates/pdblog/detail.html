@@ -5,16 +5,20 @@
 
   <div class="post">
       <h1 class="pdtitle">{{ article_detail.title }}</h1>
-      <div class="like-btn btn btn-outline-primary btn-sm mt-3" data-href="{{ article_detail.get_api_like_url }}">
+      <div class="d-inline like-btn btn btn-outline-primary btn-sm mt-3" data-href="{{ article_detail.get_api_like_url }}">
       <span class="liked_cnt">{{ article_detail.likes.count }}</span>
       like</div>
+      {% if request.user == article_detail.user %}
+      <div class="d-inline"><a href="{% url 'pdblog:article_update' article_detail.pk %}"><button class="btn btn-sm btn-outline-primary">Edit</button></a>
+        <a href="{% url 'pdblog:article_delete' article_detail.pk %}"><button class="btn btn-sm btn-outline-danger">Delete</button></a></div>
+      {% endif %}
       <div id="error" class="text-warning"></div>
-      <div class="pubdate">&nbsp;Tag:{{ article_detail.tag}} Published:{{ article_detail.pub_date|date:"n.d Y" }}<span>&nbsp; by {{ article_detail.user.last_name }}</span></div>
+      <div class="pubdate">&nbsp;Tag:{{ article_detail.tag}} Published:{{ article_detail.pub_date|date:"n.d Y" }}<span>&nbsp; by {{ article_detail.user.user_name }}</span></div>
 
       <hr>
       {{ article_detail.text | markdown_to_html_with_escape }}
       <hr>
-      <h1 class="comments_h"> Comments </h1>
+      <h1 class="comments_h"> Comments <span style="font-size:1rem;"> (comment will be shown after administrator authorizes)</span></h1>
       {% for c in valid_comments %}
       <small> Posted by {{ c.user_name }}</small>
       <small> {{ c.comment_text|linebreaksbr}} </small>
@@ -24,10 +28,6 @@
   </div>
 
   <div class='mb-3'><a href="{% url 'pdblog:comment_create' article_detail.pk %}"> Write your comment </a></div>
-  {% if request.user == article_detail.user %}
-  <div><a href="{% url 'pdblog:article_update' article_detail.pk %}"><button class="btn btn-outline-primary">Edit</button></a>
-    <a href="{% url 'pdblog:article_delete' article_detail.pk %}"><button class="btn btn-outline-danger">Delete</button></a></div>
-  {% endif %}
 
 	<script>
 		$(function(){
