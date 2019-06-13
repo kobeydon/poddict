@@ -9256,6 +9256,12 @@ body {
   font-style: italic;
 }
 
+.comment_user {
+  color: teal;
+  font-size: 12px;
+  font-style: italic;
+}
+
 td a {
   display: block;
   color: black;
