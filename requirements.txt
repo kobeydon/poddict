@@ -1,7 +1,7 @@
 djangorestframework-jwt
 Djangorestframework
 django-bootstrap4
-django==2.2.24
+django==2.2.27
 django-imagekit
 django-markdownx
 Pillow
